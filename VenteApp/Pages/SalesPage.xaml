@@ -1,0 +1,104 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:VenteApp.Resources.Localization"
+             x:Class="VenteApp.SalesPage"
+             Title="{x:Static local:Strings.SalesTitle}"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#F0F8FF">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- Header Section with Title and Basket Button -->
+            <Grid ColumnDefinitions="*,auto" Padding="0,0,0,10">
+                <Label Text="{x:Static local:Strings.SalesTitle}"
+                       FontSize="28"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center"/>
+                <Button Text="{x:Static local:Strings.ViewBasketButton}"
+                        Clicked="OnShowBasketClicked"
+                        Grid.Column="1"
+                        VerticalOptions="Center"
+                        BackgroundColor="#056296"
+                        TextColor="White"/>
+            </Grid>
+
+            <!-- Search Bar -->
+            <VerticalStackLayout>
+                <HorizontalStackLayout Spacing="15">
+                    <Entry Placeholder="{x:Static local:Strings.SearchSalePlaceholder}"
+                           HorizontalOptions="FillAndExpand"
+                           TextChanged="OnSearchTextChanged"
+                           BackgroundColor="White"
+                           WidthRequest="300"
+                           HeightRequest="40"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+
+            <!-- Sales List with Header -->
+            <Frame BorderColor="LightGray"
+                   CornerRadius="10"
+                   Padding="0"
+                   BackgroundColor="White">
+                <VerticalStackLayout>
+                    <!-- Table Headers -->
+                    <Grid Padding="10" BackgroundColor="#056296" ColumnDefinitions="*,*,*,*,*,*">
+                        <Label TextColor="White" Text="{x:Static local:Strings.NameLabel}" FontAttributes="Bold" Grid.Column="0"/>
+                        <Label TextColor="White" Text="{x:Static local:Strings.DescriptionLabel}" FontAttributes="Bold" Grid.Column="1"/>
+                        <Label TextColor="White" Text="{x:Static local:Strings.CategoryLabel}" FontAttributes="Bold" Grid.Column="2"/>
+                        <Label TextColor="White" Text="{x:Static local:Strings.SizeLabel}" FontAttributes="Bold" Grid.Column="3"/>
+                        <Label TextColor="White" Text="{x:Static local:Strings.PriceLabel}" FontAttributes="Bold" Grid.Column="4"/>
+                        <Label TextColor="White" Text="{x:Static local:Strings.QuantityLabel}" FontAttributes="Bold" Grid.Column="5"/>
+                    </Grid>
+
+                    <!-- Sales List Content -->
+                    <ListView ItemsSource="{Binding Sales}"
+                              HasUnevenRows="True"
+                              SeparatorVisibility="Default">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Padding="10" ColumnDefinitions="*,*,*,*,*,*">
+                                        <!-- Sale Data Columns -->
+                                        <Label Text="{Binding Nom}" Grid.Column="0" VerticalOptions="Center"/>
+                                        <Label Text="{Binding Description}" Grid.Column="1" VerticalOptions="Center"/>
+                                        <Label Text="{Binding Categorie}" Grid.Column="2" VerticalOptions="Center"/>
+                                        <Label Text="{Binding Taille}" Grid.Column="3" VerticalOptions="Center"/>
+                                        <Label Text="{Binding Prix, StringFormat='{0:C}'}" Grid.Column="4" VerticalOptions="Center"/>
+
+                                        <!-- Increment/Decrement Buttons and Quantity Display -->
+                                        <HorizontalStackLayout Grid.Column="5" HorizontalOptions="Start" Spacing="5">
+                                            <Button Text="-" Clicked="OnDecrementClicked" WidthRequest="40" CornerRadius="10"/>
+                                            <Entry Text="{Binding Quantite}" WidthRequest="50" HorizontalTextAlignment="Center" TextChanged="OnQuantityTextChanged" />
+                                            <Button Text="+" Clicked="OnIncrementClicked" WidthRequest="40" CornerRadius="10"/>
+                                        </HorizontalStackLayout>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Pagination Controls -->
+            <HorizontalStackLayout Spacing="20" HorizontalOptions="Center" Padding="0,20,0,0">
+                <Button Text="{x:Static local:Strings.PreviousButton}"
+                        Command="{Binding PreviousPageCommand}"
+                        BackgroundColor="#056296"
+                        TextColor="White"
+                        CornerRadius="10"
+                        Padding="12,6"/>
+                <Label Text="{Binding CurrentPage, StringFormat='{x:Static local:Strings.PageLabel}'}"
+                       VerticalOptions="Center"/>
+                <Button Text="{x:Static local:Strings.NextButton}"
+                        Command="{Binding NextPageCommand}"
+                        BackgroundColor="#056296"
+                        TextColor="White"
+                        CornerRadius="10"
+                        Padding="12,6"/>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

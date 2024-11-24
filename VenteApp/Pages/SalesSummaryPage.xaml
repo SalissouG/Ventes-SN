@@ -1,0 +1,113 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:VenteApp.Resources.Localization"
+             x:Class="VenteApp.SalesSummaryPage"
+             Title="{x:Static local:Strings.SalesSummaryTitle}"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#F0F8FF">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- Header Section with Title and PDF Download Button -->
+            <Grid ColumnDefinitions="*,auto" Padding="0,0,0,10">
+                <Label Text="{x:Static local:Strings.SalesSummaryTitle}"
+                       FontSize="28"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Start"
+                       Margin="0,0,0,10"/>
+
+                <Button Text="{x:Static local:Strings.DownloadPdfButton}"
+                        Clicked="OnDownloadSalesSummaryPdfClicked"
+                        BackgroundColor="#056296"
+                        TextColor="White"
+                        Grid.Column="1"
+                        CornerRadius="10"
+                        Padding="12,6"/>
+            </Grid>
+
+            <!-- Date and Search Controls -->
+            <VerticalStackLayout>
+                <HorizontalStackLayout Spacing="15">
+                    <!-- Date Debut Picker -->
+                    <Label Text="{x:Static local:Strings.StartDateLabel}" VerticalOptions="Center"/>
+                    <DatePicker Date="{Binding DateDebut}"
+                                BackgroundColor="White"
+                                Format="dd/MM/yyyy"/>
+
+                    <!-- Date Fin Picker -->
+                    <Label Text="{x:Static local:Strings.EndDateLabel}" VerticalOptions="Center"/>
+                    <DatePicker Date="{Binding DateFin}"
+                                BackgroundColor="White"
+                                Format="dd/MM/yyyy"/>
+
+                    <!-- Search Entry -->
+                    <Entry Placeholder="{x:Static local:Strings.SearchPlaceholder}"
+                           HorizontalOptions="FillAndExpand"
+                           TextChanged="OnSearchTextChanged"
+                           BackgroundColor="White"
+                           WidthRequest="300"
+                           HeightRequest="40"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+
+            <!-- Product Sales Summary List -->
+            <Frame BorderColor="LightGray"
+                   CornerRadius="10"
+                   Padding="0"
+                   BackgroundColor="White">
+                <VerticalStackLayout>
+                    <!-- ListView Header -->
+                    <Grid Padding="10" BackgroundColor="#056296" ColumnDefinitions="*,*,*,auto">
+                        <Label TextColor="White" Text="{x:Static local:Strings.ProductNameLabel}" FontAttributes="Bold" Grid.Column="0"/>
+                        <Label TextColor="White" Text="{x:Static local:Strings.TotalQuantitySoldLabel}" FontAttributes="Bold" Grid.Column="1"/>
+                        <Label TextColor="White" Text="{x:Static local:Strings.TotalSalesPriceLabel}" FontAttributes="Bold" Grid.Column="2"/>
+                    </Grid>
+
+                    <!-- ListView Content -->
+                    <ListView ItemsSource="{Binding ProductSalesSummary}"
+                              HasUnevenRows="True"
+                              SeparatorVisibility="Default">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Padding="10" ColumnDefinitions="*,*,*,auto">
+                                        <!-- Product Name -->
+                                        <Label Text="{Binding Nom}" Grid.Column="0" VerticalOptions="Center"/>
+
+                                        <!-- Total Quantity Sold -->
+                                        <Label Text="{Binding TotalQuantitySold}" Grid.Column="1" VerticalOptions="Center"/>
+
+                                        <!-- Total Sales Price -->
+                                        <Label Text="{Binding TotalSalesPrice, StringFormat='{0:C}'}" Grid.Column="2" VerticalOptions="Center"/>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Pagination Controls -->
+            <HorizontalStackLayout Spacing="20" HorizontalOptions="Center" Padding="0,20,0,0">
+                <Button Text="{x:Static local:Strings.PreviousButton}"
+                        Command="{Binding PreviousPageCommand}"
+                        IsEnabled="{Binding CanGoPreviousPage}"
+                        BackgroundColor="#056296"
+                        TextColor="White"
+                        CornerRadius="10"
+                        Padding="12,6"/>
+                <Label Text="{Binding CurrentPage, StringFormat='{x:Static local:Strings.PageLabel}'}"
+                       VerticalOptions="Center"/>
+                <Button Text="{x:Static local:Strings.NextButton}"
+                        Command="{Binding NextPageCommand}"
+                        IsEnabled="{Binding CanGoNextPage}"
+                        BackgroundColor="#056296"
+                        TextColor="White"
+                        CornerRadius="10"
+                        Padding="12,6"/>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

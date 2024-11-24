@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resources="clr-namespace:VenteApp.Resources.Localization"
+             x:Class="VenteApp.CreateProductPage"
+             Title="{x:Static resources:Strings.ProductPageTitle}"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#F0F8FF">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="15"
+            Padding="20,20"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+
+            <!-- Titre de la page -->
+            <Label Text="{x:Static resources:Strings.ProductPageTitle}" 
+                   FontSize="24" 
+                   HorizontalOptions="Start" 
+                   FontAttributes="Bold" />
+
+            <!-- Nom du produit -->
+            <Label Text="{x:Static resources:Strings.NameLabel}" FontSize="14" HorizontalOptions="Start" />
+            <Entry Placeholder="{x:Static resources:Strings.NamePlaceholder}" 
+                   x:Name="NomEntry" 
+                   WidthRequest="300" 
+                   HorizontalOptions="Start" 
+                   TextChanged="OnNomTextChanged" 
+                   BackgroundColor="White" />
+            <Label x:Name="NomError" TextColor="Red" FontSize="12" IsVisible="False" />
+
+            <!-- Description -->
+            <Label Text="{x:Static resources:Strings.DescriptionLabel}" FontSize="14" HorizontalOptions="Start" />
+            <Entry Placeholder="{x:Static resources:Strings.DescriptionPlaceholder}" 
+                   x:Name="DescriptionEntry" 
+                   WidthRequest="300" 
+                   HorizontalOptions="Start" 
+                   TextChanged="OnDescriptionTextChanged" 
+                   BackgroundColor="White" />
+            <Label x:Name="DescriptionError" TextColor="Red" FontSize="12" IsVisible="False" />
+
+            <!-- Prix d'achat -->
+            <Label Text="{x:Static resources:Strings.PurchasePriceLabel}" FontSize="14" HorizontalOptions="Start" />
+            <Entry Placeholder="{x:Static resources:Strings.PurchasePricePlaceholder}" 
+                   x:Name="PrixAchatEntry" 
+                   WidthRequest="300" 
+                   Keyboard="Numeric" 
+                   HorizontalOptions="Start" 
+                   TextChanged="OnPrixAchatTextChanged" 
+                   BackgroundColor="White" />
+            <Label x:Name="PrixAchatError" TextColor="Red" FontSize="12" IsVisible="False" />
+
+            <!-- Prix de vente -->
+            <Label Text="{x:Static resources:Strings.SalePriceLabel}" FontSize="14" HorizontalOptions="Start" />
+            <Entry Placeholder="{x:Static resources:Strings.SalePricePlaceholder}" 
+                   x:Name="PrixVenteEntry" 
+                   WidthRequest="300" 
+                   Keyboard="Numeric" 
+                   HorizontalOptions="Start" 
+                   TextChanged="OnPrixVenteTextChanged" 
+                   BackgroundColor="White" />
+            <Label x:Name="PrixVenteError" TextColor="Red" FontSize="12" IsVisible="False" />
+
+            <!-- Quantité en stock -->
+            <Label Text="{x:Static resources:Strings.StockLabel}" FontSize="14" HorizontalOptions="Start" />
+            <Entry Placeholder="{x:Static resources:Strings.StockPlaceholder}" 
+                   x:Name="QuantiteEntry" 
+                   WidthRequest="300" 
+                   Keyboard="Numeric" 
+                   HorizontalOptions="Start" 
+                   TextChanged="OnQuantiteTextChanged" 
+                   BackgroundColor="White" />
+            <Label x:Name="QuantiteError" TextColor="Red" FontSize="12" IsVisible="False" />
+
+            <!-- Catégorie -->
+            <Label Text="{x:Static resources:Strings.CategoryLabel}" FontSize="14" HorizontalOptions="Start" />
+            <Entry Placeholder="{x:Static resources:Strings.CategoryPlaceholder}" 
+                   x:Name="CategorieEntry" 
+                   WidthRequest="300" 
+                   HorizontalOptions="Start" 
+                   BackgroundColor="White" />
+            <Label x:Name="CategorieError" TextColor="Red" FontSize="12" IsVisible="False" />
+
+            <!-- Taille -->
+            <Label Text="{x:Static resources:Strings.SizeLabel}" FontSize="14" HorizontalOptions="Start" />
+            <Entry Placeholder="{x:Static resources:Strings.SizePlaceholder}" 
+                   x:Name="TailleEntry" 
+                   WidthRequest="300" 
+                   HorizontalOptions="Start" 
+                   BackgroundColor="White" />
+
+            <!-- Unité de Mesure -->
+            <Label Text="{x:Static resources:Strings.UnitMeasureLabel}" FontSize="14" HorizontalOptions="Start" />
+            <Entry Placeholder="{x:Static resources:Strings.UnitMeasurePlaceholder}" 
+                   x:Name="UniteMesureEntry" 
+                   WidthRequest="300" 
+                   HorizontalOptions="Start" 
+                   BackgroundColor="White" />
+            <Label x:Name="UniteMesureError" TextColor="Red" FontSize="12" IsVisible="False" />
+
+            <!-- Date d'expiration -->
+            <Label Text="{x:Static resources:Strings.ExpirationDateLabel}" FontSize="14" HorizontalOptions="Start" />
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
+                <Label x:Name="ExpirationDatePlaceholder" 
+             Text="{x:Static resources:Strings.SelectDatePlaceholder}" 
+             WidthRequest="300" 
+             BackgroundColor="White" 
+             VerticalTextAlignment="Center" 
+             TextColor="Gray" 
+             FontSize="14"
+             IsVisible="True">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnDatePlaceholderTapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <DatePicker x:Name="ExpirationDatePicker" 
+                  WidthRequest="300" 
+                  HorizontalOptions="Start" 
+                  BackgroundColor="White" 
+                  Format="dd/MM/yyyy" 
+                  IsVisible="False"
+                  DateSelected="OnDateSelected" />
+            </StackLayout>
+            <Label x:Name="ExpirationDateError" TextColor="Red" FontSize="12" IsVisible="False" />
+            
+
+            <!-- Buttons -->
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+                <Button Text="{x:Static resources:Strings.SaveButton}" Clicked="OnSaveProductClicked" WidthRequest="150"/>
+                <Button Text="{x:Static resources:Strings.CancelButton}" Clicked="OnCancelClicked" WidthRequest="150"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

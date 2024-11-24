@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:VenteApp.Resources.Localization"
+             x:Class="VenteApp.BillDetailPage"
+             Title="{x:Static local:Strings.InvoiceTitle}"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#F0F8FF">
+    <ScrollView>
+        <VerticalStackLayout Padding="40" Spacing="20">
+            <!-- Main Billing Frame -->
+            <Frame BorderColor="LightGray" CornerRadius="10" Padding="20" BackgroundColor="White">
+                <VerticalStackLayout Spacing="20">
+
+                    <!-- Invoice Title -->
+                    <Label Text="{x:Static local:Strings.InvoiceTitle}" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" />
+
+                    <!-- Client Information -->
+                    <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto, Auto" Padding="5">
+                        <Label Text="{x:Static local:Strings.ClientLabel}" FontAttributes="Bold" Grid.Row="0" Grid.Column="0" />
+                        <Label Text="{Binding Bill.ClientName}" Grid.Row="0" Grid.Column="1" Margin="10,0,0,0" />
+                        <Label Text="{x:Static local:Strings.DateLabel}" FontAttributes="Bold" Grid.Row="1" Grid.Column="0" />
+                        <Label Text="{Binding Bill.SaleDate, StringFormat='{x:Static local:Strings.DateFormat}'}" Grid.Row="1" Grid.Column="1"  Margin="10,0,0,0" />
+                        <Label Text="{x:Static local:Strings.ClientNumberLabelFact}" FontAttributes="Bold" Grid.Row="2" Grid.Column="0" />
+                        <Label Text="{Binding Bill.NumeroSiret, StringFormat='{x:Static local:Strings.DateFormat}'}" Grid.Row="2" Grid.Column="1"  Margin="10,0,0,0"/>
+                    </Grid>
+
+                    <!-- Total Amount -->
+                    <Label Text="{Binding Bill.TotalAmount, StringFormat='{x:Static local:Strings.TotalLabel}: {0:C}'}" FontSize="20" FontAttributes="Bold" HorizontalOptions="End" />
+
+                    <!-- Product List with Header -->
+                    <Frame BorderColor="LightGray"
+                           CornerRadius="10"
+                           Padding="0"
+                           BackgroundColor="White">
+                        <ListView ItemsSource="{Binding Bill.Products}"
+                                HasUnevenRows="True"
+                                SeparatorVisibility="Default">
+                            <!-- ListView Header -->
+                            <ListView.Header>
+                                <Grid Padding="10" BackgroundColor="#056296" ColumnDefinitions="*,*,*">
+                                    <Label TextColor="White" Text="{x:Static local:Strings.ProductLabel}" FontAttributes="Bold" Grid.Column="0"/>
+                                    <Label TextColor="White" Text="{x:Static local:Strings.QuantityLabel}" FontAttributes="Bold" Grid.Column="1"/>
+                                    <Label TextColor="White" Text="{x:Static local:Strings.PriceLabel}" FontAttributes="Bold" Grid.Column="2"/>
+                                </Grid>
+                            </ListView.Header>
+                            <!-- Product List Content -->
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid Padding="10" ColumnDefinitions="*,*,*">
+                                            <Label Text="{Binding ProductName}" Grid.Column="0" VerticalOptions="Center"/>
+                                            <Label Text="{Binding Quantity}" Grid.Column="1" VerticalOptions="Center"/>
+                                            <Label Text="{Binding Price, StringFormat='{0:C}'}" Grid.Column="2" VerticalOptions="Center"/>
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Frame>
+                    <Button Text="{x:Static local:Strings.DownloadPdfButton}" Clicked="OnDownloadPdfClicked" HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

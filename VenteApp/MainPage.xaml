@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:VenteApp.Resources.Localization"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="VenteApp.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="30"
+            Padding="15,15"
+            VerticalOptions="Start"
+            HorizontalOptions="Center">
+
+            <!-- Logo Section -->
+            <Image Source="logowhite.jpg" HeightRequest="200" HorizontalOptions="Center" Margin="0,15,0,0"/>
+
+
+            <!-- Title -->
+            <Label
+                Text="{x:Static local:Strings.LoginPageTitle}"
+                FontSize="28"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                FontAttributes="Bold" />
+
+            <!-- Login Entry -->
+            <Label
+                Text="{x:Static local:Strings.LoginLabel}"
+                FontSize="14"
+                HorizontalOptions="Start" />
+            <Entry
+                Placeholder="{x:Static local:Strings.LoginPlaceholder}"
+                x:Name="LoginEntry"
+                WidthRequest="300"
+                HorizontalOptions="Center" />
+
+            <!-- Password Entry -->
+            <Label
+                Text="{x:Static local:Strings.PasswordLabel}"
+                FontSize="14"
+                HorizontalOptions="Start" />
+            <Entry
+                Placeholder="{x:Static local:Strings.PasswordPlaceholder}"
+                IsPassword="True"
+                x:Name="PasswordEntry"
+                WidthRequest="300"
+                HorizontalOptions="Center" 
+                Completed="OnLoginClicked"/>
+
+            <!-- Login Button -->
+            <Button
+                Text="{x:Static local:Strings.LoginButton}"
+                FontSize="16"
+                WidthRequest="200"
+                HeightRequest="50"
+                CornerRadius="10"
+                HorizontalOptions="Center"
+                Clicked="OnLoginClicked" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

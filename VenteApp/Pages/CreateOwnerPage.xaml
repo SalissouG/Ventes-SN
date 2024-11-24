@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VenteApp.CreateOwnerPage"
+             xmlns:resources="clr-namespace:VenteApp.Resources.Localization"
+             Title="Create Owner"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#F0F8FF">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="15" Padding="20,20" HorizontalOptions="Center" VerticalOptions="Center">
+
+            <!-- Page Title -->
+            <Label Text="Owner Information" FontSize="24" HorizontalOptions="Start" FontAttributes="Bold" />
+
+            <!-- Address Entry -->
+            <Label Text="Address" FontSize="14" HorizontalOptions="Start" />
+            <Entry Placeholder="Enter the owner's address" x:Name="AddressEntry" WidthRequest="300" BackgroundColor="White" />
+            <Label x:Name="AddressError" TextColor="Red" FontSize="12" IsVisible="False" />
+
+            <!-- Phone Number Entry -->
+            <Label Text="Phone Number" FontSize="14" HorizontalOptions="Start" />
+            <Entry Placeholder="Enter phone number" x:Name="PhoneNumberEntry" WidthRequest="300" Keyboard="Telephone" BackgroundColor="White" />
+            <Label x:Name="PhoneError" TextColor="Red" FontSize="12" IsVisible="False" />
+
+            <!-- Logo Picker -->
+            <Label Text="Logo" FontSize="14" HorizontalOptions="Start" />
+            <Button Text="Select Logo" Clicked="OnSelectLogoClicked" WidthRequest="150" />
+            <Image x:Name="LogoImage" HeightRequest="100" IsVisible="False" />
+
+            <!-- Action Buttons -->
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+                <Button Text="Save" Clicked="OnSaveOwnerClicked" WidthRequest="150" />
+                <Button Text="Cancel" Clicked="OnCancelClicked" WidthRequest="150" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

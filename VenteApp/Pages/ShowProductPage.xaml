@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:VenteApp.Resources.Localization"
+             x:Class="VenteApp.ShowProductPage"
+             Title="{x:Static local:Strings.ProductDetailsTitle}"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#F0F8FF">
+
+    <!-- Product Tab -->
+    <ContentPage Title="{x:Static local:Strings.ProductDetailsTabTitle}" NavigationPage.HasNavigationBar="False">
+        <ScrollView>
+            <VerticalStackLayout Padding="20" Spacing="15">
+                <!-- Page Title -->
+                <Label Text="{x:Static local:Strings.ProductDetailsTitle}"
+                       FontSize="24"
+                       HorizontalOptions="Start"
+                       FontAttributes="Bold" />
+
+                <!-- Product Details -->
+                <HorizontalStackLayout Spacing="20">
+                    <Label Text="{x:Static local:Strings.NameLabel}" FontAttributes="Bold" />
+                    <Label Text="{Binding Nom}" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="20">
+                    <Label Text="{x:Static local:Strings.DescriptionLabel}" FontAttributes="Bold" />
+                    <Label Text="{Binding Description}" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="20">
+                    <Label Text="{x:Static local:Strings.CategoryLabel}" FontAttributes="Bold" />
+                    <Label Text="{Binding Categorie}" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="20">
+                    <Label Text="{x:Static local:Strings.SizeLabel}" FontAttributes="Bold" />
+                    <Label Text="{Binding Taille}" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="20">
+                    <Label Text="{x:Static local:Strings.PriceLabel}" FontAttributes="Bold" />
+                    <Label Text="{Binding PrixVente, StringFormat='{0:C}'}" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="20">
+                    <Label Text="{x:Static local:Strings.QuantityLabel}" FontAttributes="Bold" />
+                    <Label Text="{Binding Quantite}" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="20">
+                    <Label Text="{x:Static local:Strings.PurchasePriceLabel}" FontAttributes="Bold" />
+                    <Label Text="{Binding PrixAchat, StringFormat='{0:C}'}" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="20">
+                    <Label Text="{x:Static local:Strings.CodeLabel}" FontAttributes="Bold" />
+                    <Label Text="{Binding Code}" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="20">
+                    <Label Text="{x:Static local:Strings.ExpirationDateLabel}" FontAttributes="Bold" />
+                    <Label Text="{Binding DateExpiration, StringFormat='{0:d}'}" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="20">
+                    <Label Text="{x:Static local:Strings.UnitMeasureLabel}" FontAttributes="Bold" />
+                    <Label Text="{Binding UniteMesure}" />
+                </HorizontalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage>
+
+    <!-- Provider Tab -->
+    <!--<ContentPage Title="{x:Static local:Strings.ProviderDetailsTabTitle}" NavigationPage.HasNavigationBar="False">
+        <ScrollView>
+            <VerticalStackLayout Padding="20" Spacing="15">
+                --><!-- Provider Details (only shown if Provider exists) --><!--
+                <HorizontalStackLayout Spacing="20">
+                    <Label Text="{x:Static local:Strings.ProviderNameLabel}" FontAttributes="Bold" />
+                    <Label Text="{Binding Provider.Nom}" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="20">
+                    <Label Text="{x:Static local:Strings.ProviderFirstNameLabel}" FontAttributes="Bold" />
+                    <Label Text="{Binding Provider.Prenom}" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="20">
+                    <Label Text="{x:Static local:Strings.ProviderPhoneLabel}" FontAttributes="Bold" />
+                    <Label Text="{Binding Provider.Numero}" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="20">
+                    <Label Text="{x:Static local:Strings.ProviderAddressLabel}" FontAttributes="Bold" />
+                    <Label Text="{Binding Provider.Adresse}" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="20">
+                    <Label Text="{x:Static local:Strings.ProviderEmailLabel}" FontAttributes="Bold" />
+                    <Label Text="{Binding Provider.Email}" />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage>-->
+
+</TabbedPage>

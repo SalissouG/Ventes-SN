@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<FlyoutPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:VenteApp.Resources.Localization"
+            x:Class="VenteApp.MenuPage"
+            Title="{x:Static local:Strings.MenuTitle}"
+            NavigationPage.HasNavigationBar="False"
+            BackgroundColor="#F0F8FF">
+
+    <!-- Side Menu -->
+    <FlyoutPage.Flyout>
+        <ContentPage Title="{x:Static local:Strings.MenuTitle}" BackgroundColor="#cefaf7" NavigationPage.HasNavigationBar="False">
+            <ScrollView>
+                <VerticalStackLayout Padding="10" Spacing="15">
+                    <!-- Logo Section -->
+                    <Image Source="logowhite.jpg" HeightRequest="150" HorizontalOptions="Center" Margin="0,15,0,0"/>
+
+                    <!-- User Information -->
+                    <Frame Padding="10" BackgroundColor="White" CornerRadius="10" HasShadow="True" Margin="0,10,0,20">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding ConnectedUserName}" FontSize="16" FontAttributes="Bold" HorizontalOptions="Center"/>
+                            <Label Text="{x:Static local:Strings.AppName}" FontSize="Small" TextColor="Gray" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <Label x:Name="LicenseWarningLabel"
+                           Text="{x:Static local:Strings.LicenseWarningText}"
+                           TextColor="Red"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           IsVisible="False" />
+
+                    <!-- Menu Items -->
+                    <HorizontalStackLayout x:Name="ProductsLayout" Spacing="10" StyleClass="MenuLayout">
+                        <Image Source="logowhite.jpg" HeightRequest="24" WidthRequest="24"/>
+                        <Label x:Name="ProductsLabel" Text="{x:Static local:Strings.ProductsLabel}" StyleClass="MenuLabel"/>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnProductsClicked"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout x:Name="SalesLayout" Spacing="10" StyleClass="MenuLayout">
+                        <Image Source="logowhite.jpg" HeightRequest="24" WidthRequest="24"/>
+                        <Label x:Name="SalesLabel" Text="{x:Static local:Strings.SalesLabel}" StyleClass="MenuLabel"/>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnSalesClicked"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout x:Name="BasketLayout" Spacing="10" StyleClass="MenuLayout">
+                        <Image Source="logowhite.jpg" HeightRequest="24" WidthRequest="24"/>
+                        <Label x:Name="BasketLabel" Text="{x:Static local:Strings.BasketLabel}" StyleClass="MenuLabel"/>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnBasketClicked"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout x:Name="BillingLayout" Spacing="10" StyleClass="MenuLayout">
+                        <Image Source="logowhite.jpg" HeightRequest="24" WidthRequest="24"/>
+                        <Label x:Name="BillingLabel" Text="{x:Static local:Strings.BillingLabel}" StyleClass="MenuLabel"/>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnBillingClicked"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout x:Name="ClientsLayout" Spacing="10" StyleClass="MenuLayout">
+                        <Image Source="logowhite.jpg" HeightRequest="24" WidthRequest="24"/>
+                        <Label x:Name="ClientsLabel" Text="{x:Static local:Strings.ClientsLabel}" StyleClass="MenuLabel"/>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnClientsClicked"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout x:Name="HistoricalLayout" Spacing="10" StyleClass="MenuLayout">
+                        <Image Source="logowhite.jpg" HeightRequest="24" WidthRequest="24"/>
+                        <Label x:Name="HistoricalLabel" Text="{x:Static local:Strings.HistoricalLabel}" StyleClass="MenuLabel"/>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnHistoricalClicked"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout x:Name="InventoryLayout" Spacing="10" StyleClass="MenuLayout">
+                        <Image Source="logowhite.jpg" HeightRequest="24" WidthRequest="24"/>
+                        <Label x:Name="InventoryLabel" Text="{x:Static local:Strings.InventoryLabel}" StyleClass="MenuLabel"/>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnInventoryClicked"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout x:Name="SalesSummaryLayout" Spacing="10" StyleClass="MenuLayout">
+                        <Image Source="logowhite.jpg" HeightRequest="24" WidthRequest="24"/>
+                        <Label x:Name="SalesSummaryLabel" Text="{x:Static local:Strings.SalesSummaryLabel}" StyleClass="MenuLabel"/>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnSalesSummaryClicked"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout x:Name="DashboardLayout" Spacing="10" StyleClass="MenuLayout">
+                        <Image Source="logowhite.jpg" HeightRequest="24" WidthRequest="24"/>
+                        <Label x:Name="DashboardLabel" Text="{x:Static local:Strings.DashboardLabel}" StyleClass="MenuLabel"/>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnDashboardClicked"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout x:Name="UsersLayout" Spacing="10" StyleClass="MenuLayout">
+                        <Image Source="logowhite.jpg" HeightRequest="24" WidthRequest="24"/>
+                        <Label x:Name="UsersLabel" Text="{x:Static local:Strings.UsersLabel}" StyleClass="MenuLabel"/>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnUsersClicked"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout x:Name="LicenseLayout" Spacing="10" StyleClass="MenuLayout">
+                        <Image Source="logowhite.jpg" HeightRequest="24" WidthRequest="24"/>
+                        <Label x:Name="LicenseLabel" Text="{x:Static local:Strings.LicenseLabel}" StyleClass="MenuLabel"/>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnLicenseClicked"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                    </HorizontalStackLayout>
+
+                    <!-- Owner Information Menu Item (Admin Only) -->
+                    <HorizontalStackLayout x:Name="OwnerLayout" Spacing="10" StyleClass="MenuLayout" IsVisible="False">
+                        <Image Source="logowhite.jpg" HeightRequest="24" WidthRequest="24"/>
+                        <Label x:Name="OwnerLabel" Text="{x:Static local:Strings.OwnerLabel}" StyleClass="MenuLabel"/>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnOwnerClicked"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                    </HorizontalStackLayout>
+
+                    <!-- Logout Label -->
+                    <HorizontalStackLayout x:Name="DeconnexionLayout" Spacing="10" StyleClass="MenuLayout">
+                        <Image Source="logowhite.jpg" HeightRequest="24" WidthRequest="24"/>
+                        <Label x:Name="DeconnexionLabel" Text="{x:Static local:Strings.LogoutLabel}" StyleClass="MenuLabel" TextColor="Red" HorizontalOptions="Center"/>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnDeconnexionClicked"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </ScrollView>
+        </ContentPage>
+    </FlyoutPage.Flyout>
+
+    <!-- Main Content Area -->
+    <FlyoutPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                <ContentPage Title="{x:Static local:Strings.WelcomeTitle}">
+                    <Label Text="{x:Static local:Strings.WelcomeMessage}" VerticalOptions="Center" HorizontalOptions="Center"/>
+                </ContentPage>
+            </x:Arguments>
+        </NavigationPage>
+    </FlyoutPage.Detail>
+</FlyoutPage>

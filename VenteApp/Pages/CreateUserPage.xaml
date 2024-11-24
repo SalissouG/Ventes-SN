@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:VenteApp.Resources.Localization"
+             x:Class="VenteApp.CreateUserPage"
+             Title="{x:Static local:Strings.CreateUserTitle}"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#F0F8FF">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="15"
+            Padding="20,20"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+
+            <!-- Page Title -->
+            <Label Text="{x:Static local:Strings.UserTitle}"
+                   FontSize="24"
+                   HorizontalOptions="Start"
+                   FontAttributes="Bold"/>
+
+            <!-- Nom Entry -->
+            <Label Text="{x:Static local:Strings.NameLabel}" FontSize="14" HorizontalOptions="Start" />
+            <Entry Placeholder="{x:Static local:Strings.NamePlaceholder}" x:Name="NomEntry" WidthRequest="300"
+                   HorizontalOptions="Start" TextChanged="OnNomTextChanged" BackgroundColor="White"/>
+            <Label x:Name="NomError" TextColor="Red" FontSize="12" IsVisible="False" />
+
+            <!-- Prénom Entry -->
+            <Label Text="{x:Static local:Strings.FirstNameLabel}" FontSize="14" HorizontalOptions="Start" />
+            <Entry Placeholder="{x:Static local:Strings.FirstNamePlaceholder}" x:Name="PrenomEntry" WidthRequest="300"
+                   HorizontalOptions="Start" TextChanged="OnPrenomTextChanged" BackgroundColor="White"/>
+            <Label x:Name="PrenomError" TextColor="Red" FontSize="12" IsVisible="False" />
+
+            <!-- Numéro de téléphone Entry -->
+            <Label Text="{x:Static local:Strings.PhoneLabel}" FontSize="14" HorizontalOptions="Start" />
+            <Entry Placeholder="{x:Static local:Strings.PhonePlaceholder}" x:Name="NumeroEntry" WidthRequest="300"
+                   Keyboard="Telephone" HorizontalOptions="Start" TextChanged="OnNumeroTextChanged" BackgroundColor="White"/>
+            <Label x:Name="NumeroError" TextColor="Red" FontSize="12" IsVisible="False" />
+
+            <!-- Adresse Entry -->
+            <Label Text="{x:Static local:Strings.AddressLabel}" FontSize="14" HorizontalOptions="Start" />
+            <Entry Placeholder="{x:Static local:Strings.AddressPlaceholder}" x:Name="AdresseEntry" WidthRequest="300"
+                   HorizontalOptions="Start" BackgroundColor="White"/>
+
+            <!-- Email Entry -->
+            <Label Text="{x:Static local:Strings.EmailLabel}" FontSize="14" HorizontalOptions="Start" />
+            <Entry Placeholder="{x:Static local:Strings.EmailPlaceholder}" x:Name="EmailEntry" WidthRequest="300"
+                   Keyboard="Email" HorizontalOptions="Start" TextChanged="OnEmailTextChanged" BackgroundColor="White"/>
+            <Label x:Name="EmailError" TextColor="Red" FontSize="12" IsVisible="False" />
+
+            <!-- Login Entry -->
+            <Label Text="{x:Static local:Strings.LoginLabel}" FontSize="14" HorizontalOptions="Start" />
+            <Entry Placeholder="{x:Static local:Strings.LoginPlaceholder}" x:Name="LoginEntry" WidthRequest="300"
+                   HorizontalOptions="Start" TextChanged="OnLoginTextChanged" BackgroundColor="White"/>
+            <Label x:Name="LoginError" TextColor="Red" FontSize="12" IsVisible="False" />
+
+            <!-- Password Entry -->
+            <Label Text="{x:Static local:Strings.PasswordLabel}" FontSize="14" HorizontalOptions="Start" />
+            <Entry Placeholder="{x:Static local:Strings.PasswordPlaceholder}" x:Name="PasswordEntry" IsPassword="True"
+                   WidthRequest="300" HorizontalOptions="Start" TextChanged="OnPasswordTextChanged" BackgroundColor="White"/>
+            <Label x:Name="PasswordError" TextColor="Red" FontSize="12" IsVisible="False" />
+
+            <!-- Role Picker -->
+            <Label Text="{x:Static local:Strings.RoleLabel}" FontSize="14" HorizontalOptions="Start" />
+            <Picker x:Name="RolePicker" WidthRequest="300" HorizontalOptions="Start" BackgroundColor="White"/>
+
+            <!-- Action Buttons -->
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+                <Button Text="{x:Static local:Strings.SaveButton}" Clicked="OnSaveUserClicked" WidthRequest="150"/>
+                <Button Text="{x:Static local:Strings.CancelButton}" Clicked="OnCancelClicked" WidthRequest="150"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:VenteApp.Resources.Localization"
+             x:Class="VenteApp.BillingPage"
+             Title="{x:Static local:Strings.BillingsTitle}"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#F0F8FF">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- Header Section with Title and Add Button -->
+            <Grid ColumnDefinitions="*,auto" Padding="0,0,0,10">
+                <!-- Header Section with Title -->
+                <Label Text="{x:Static local:Strings.BillingsTitle}"
+                        FontSize="28"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Start"
+                        Margin="0,0,0,10"/>
+                <Button Text="{x:Static local:Strings.DownloadAllPdfButton}"
+                        Clicked="OnDownloadAllBillingsPdfClicked"
+                        BackgroundColor="#056296"
+                        TextColor="White"
+                        Grid.Column="1"
+                        CornerRadius="10"
+                        Padding="12,6"/>
+            </Grid>
+
+            <!-- Search Bar -->
+            <VerticalStackLayout>
+                <HorizontalStackLayout Spacing="15">
+                    <Entry Placeholder="{x:Static local:Strings.SearchPlaceholder}"
+                           HorizontalOptions="FillAndExpand"
+                           TextChanged="OnSearchTextChanged"
+                           BackgroundColor="White"
+                           WidthRequest="300"
+                           HeightRequest="40"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+
+            <!-- Billing List with Header -->
+            <Frame BorderColor="LightGray"
+                   CornerRadius="10"
+                   Padding="0"
+                   BackgroundColor="White">
+                <VerticalStackLayout>
+                    <!-- Table Headers -->
+                    <Grid Padding="10" BackgroundColor="#056296" ColumnDefinitions="*,*,*,*,*">
+                        <Label TextColor="White" Text="{x:Static local:Strings.ClientLabel}" FontAttributes="Bold" Grid.Column="0"/>
+                        <Label TextColor="White" Text="{x:Static local:Strings.TotalLabel}" FontAttributes="Bold" Grid.Column="1"/>
+                        <Label TextColor="White" Text="{x:Static local:Strings.ProductsLabel}" FontAttributes="Bold" Grid.Column="2"/>
+                        <Label TextColor="White" Text="{x:Static local:Strings.SaleDateLabel}" FontAttributes="Bold" Grid.Column="3"/>
+                        <Label TextColor="White" Text="{x:Static local:Strings.ActionsLabel}" FontAttributes="Bold" Grid.Column="4"/>
+                    </Grid>
+
+                    <!-- Billing List -->
+                    <ListView ItemsSource="{Binding BillingList}"
+                              HasUnevenRows="True"
+                              SeparatorVisibility="Default">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Padding="10" ColumnDefinitions="*,*,*,*,*">
+                                        <!-- Billing Data Columns -->
+                                        <Label Text="{Binding ClientName}" Grid.Column="0" VerticalOptions="Center"/>
+                                        <Label Text="{Binding TotalAmount, StringFormat='{0:C}'}" Grid.Column="1" VerticalOptions="Center"/>
+                                        <Label Text="{Binding NumberOfProducts}" Grid.Column="2" VerticalOptions="Center"/>
+                                        <Label Text="{Binding SaleDate, StringFormat='{0:dd/MM/yyyy HH:mm}'}" Grid.Column="3" VerticalOptions="Center"/>
+
+                                        <!-- View Button -->
+                                        <Button Text="{x:Static local:Strings.ViewButton}"
+                                                Clicked="OnViewBillClicked"
+                                                CommandParameter="{Binding OrderId}"
+                                                CornerRadius="10"
+                                                Grid.Column="4"/>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Pagination Controls -->
+            <HorizontalStackLayout Spacing="20" HorizontalOptions="Center" Padding="0,20,0,0">
+                <Button Text="{x:Static local:Strings.PreviousButton}"
+                        Command="{Binding PreviousPageCommand}"
+                        BackgroundColor="#056296"
+                        TextColor="White"
+                        CornerRadius="10"
+                        Padding="12,6"/>
+                <Label Text="{Binding CurrentPage, StringFormat='{x:Static local:Strings.PageLabel}'}"
+                       VerticalOptions="Center"/>
+                <Button Text="{x:Static local:Strings.NextButton}"
+                        Command="{Binding NextPageCommand}"
+                        BackgroundColor="#056296"
+                        TextColor="White"
+                        CornerRadius="10"
+                        Padding="12,6"/>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

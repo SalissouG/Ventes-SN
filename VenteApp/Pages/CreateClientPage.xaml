@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VenteApp.CreateClientPage"
+             xmlns:resources="clr-namespace:VenteApp.Resources.Localization"
+             Title="{x:Static resources:Strings.PageTitle}"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#F0F8FF">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="15"
+            Padding="20,20"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+
+            <!-- Page Title -->
+            <Label Text="{x:Static resources:Strings.ClientTitle}"
+                   FontSize="24"
+                   HorizontalOptions="Start"
+                   FontAttributes="Bold" />
+
+            <!-- Last Name Entry (Nom) -->
+            <Label Text="{x:Static resources:Strings.LastNameLabel}" FontSize="14" HorizontalOptions="Start" />
+            <Entry Placeholder="{x:Static resources:Strings.LastNamePlaceholder}" x:Name="NomEntry" WidthRequest="300" HorizontalOptions="Start"
+                   TextChanged="OnNomTextChanged" BackgroundColor="White"/>
+            <Label x:Name="NomError" TextColor="Red" FontSize="12" IsVisible="False" />
+
+            <!-- First Name Entry (Prénom) -->
+            <Label Text="{x:Static resources:Strings.FirstNameLabel}" FontSize="14" HorizontalOptions="Start" />
+            <Entry Placeholder="{x:Static resources:Strings.FirstNamePlaceholder}" x:Name="PrenomEntry" WidthRequest="300" HorizontalOptions="Start"
+                   TextChanged="OnPrenomTextChanged" BackgroundColor="White"/>
+            <Label x:Name="PrenomError" TextColor="Red" FontSize="12" IsVisible="False" />
+
+            <!-- Phone Number Entry (Numéro de téléphone) -->
+            <Label Text="{x:Static resources:Strings.PhoneLabel}" FontSize="14" HorizontalOptions="Start" />
+            <Entry Placeholder="{x:Static resources:Strings.PhonePlaceholder}" x:Name="NumeroEntry" WidthRequest="300" Keyboard="Telephone"
+                   HorizontalOptions="Start" TextChanged="OnNumeroTextChanged" BackgroundColor="White"/>
+            <Label x:Name="NumeroError" TextColor="Red" FontSize="12" IsVisible="False" />
+
+            <!-- Address Entry (Adresse) -->
+            <Label Text="{x:Static resources:Strings.AddressLabel}" FontSize="14" HorizontalOptions="Start" />
+            <Entry Placeholder="{x:Static resources:Strings.AddressPlaceholder}" x:Name="AdresseEntry" WidthRequest="300" HorizontalOptions="Start"
+                   BackgroundColor="White"/>
+
+            <!-- Email Entry -->
+            <Label Text="{x:Static resources:Strings.EmailLabel}" FontSize="14" HorizontalOptions="Start" />
+            <Entry Placeholder="{x:Static resources:Strings.EmailPlaceholder}" x:Name="EmailEntry" WidthRequest="300" Keyboard="Email"
+                   HorizontalOptions="Start" TextChanged="OnEmailTextChanged" BackgroundColor="White"/>
+            <Label x:Name="EmailError" TextColor="Red" FontSize="12" IsVisible="False" />
+
+            <!-- Numéro Client Entry -->
+            <Label Text="{x:Static resources:Strings.ClientNumberLabel}" FontSize="14" HorizontalOptions="Start" />
+            <Entry Placeholder="{x:Static resources:Strings.ClientNumberPlaceholder}" 
+                    x:Name="NumeroClientEntry" 
+                    WidthRequest="300" 
+                    HorizontalOptions="Start" 
+                    BackgroundColor="White"/>
+
+            <!-- Action Buttons -->
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+                <Button Text="{x:Static resources:Strings.SaveButton}" Clicked="OnSaveClientClicked" WidthRequest="150"/>
+                <Button Text="{x:Static resources:Strings.CancelButton}" Clicked="OnCancelClicked" WidthRequest="150"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

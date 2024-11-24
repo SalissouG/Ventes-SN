@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VenteApp.OwnerPage"
+             Title="Owner Information"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#F0F8FF">
+
+    <VerticalStackLayout Padding="20" Spacing="15">
+        <Label Text="Owner Information" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center" />
+
+        <!-- Owner Details Panel -->
+        <Frame BorderColor="LightGray" CornerRadius="10" Padding="15" BackgroundColor="White">
+            <VerticalStackLayout>
+                <!-- Display message if no owner exists -->
+                <Label x:Name="NoOwnerLabel" Text="No owner information available." IsVisible="False" FontSize="18" HorizontalOptions="Center" />
+
+                <!-- Owner details when available -->
+                <Label x:Name="OwnerAddressLabel" Text="Address: " FontSize="16" IsVisible="False" />
+                <Label x:Name="OwnerPhoneLabel" Text="Phone Number: " FontSize="16" IsVisible="False" />
+                <Image x:Name="OwnerLogoImage" HeightRequest="100" IsVisible="False" />
+
+                <!-- Buttons for adding or editing owner -->
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+                    <Button x:Name="AddOwnerButton" Text="Add Owner" Clicked="OnAddOwnerClicked" IsVisible="True" />
+                    <Button x:Name="EditOwnerButton" Text="Edit Owner" Clicked="OnEditOwnerClicked" IsVisible="False" />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </Frame>
+    </VerticalStackLayout>
+</ContentPage>

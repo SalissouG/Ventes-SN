@@ -1,0 +1,120 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:VenteApp.Resources.Localization"
+             x:Class="VenteApp.ProductsPage"
+             Title="{x:Static local:Strings.ProductsTitle}"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#F0F8FF">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- Header Section with Title and Add Button -->
+            <Grid ColumnDefinitions="*,auto" Padding="0,0,0,10">
+                <Label Text="{x:Static local:Strings.ProductsTitle}"
+                       FontSize="28"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center"/>
+                <Button Text="{x:Static local:Strings.AddProductButton}"
+                        Clicked="OnAddProductClicked"
+                        Grid.Column="1"
+                        VerticalOptions="Center"
+                        BackgroundColor="#056296"
+                        TextColor="White"/>
+            </Grid>
+
+            <!-- Search Bar -->
+            <VerticalStackLayout>
+                <HorizontalStackLayout Spacing="15">
+                    <Entry Placeholder="{x:Static local:Strings.SearchProductPlaceholder}"
+                           HorizontalOptions="FillAndExpand"
+                           TextChanged="OnSearchTextChanged"
+                           BackgroundColor="White"
+                           WidthRequest="300"
+                           HeightRequest="40"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+
+            <!-- Products List with Header -->
+            <Frame BorderColor="LightGray"
+                   CornerRadius="10"
+                   Padding="0"
+                   BackgroundColor="White">
+                <VerticalStackLayout>
+                    <!-- Table Headers -->
+                    <Grid Padding="10" BackgroundColor="#056296" ColumnDefinitions="*,*,*,*,*,*,*,*,*,*,*">
+                        <Label TextColor="White" Text="{x:Static local:Strings.NameLabel}" FontAttributes="Bold" Grid.Column="0"/>
+                        <Label TextColor="White" Text="{x:Static local:Strings.DescriptionLabel}" FontAttributes="Bold" Grid.Column="1"/>
+                        <Label TextColor="White" Text="{x:Static local:Strings.CategoryLabel}" FontAttributes="Bold" Grid.Column="2"/>
+                        <Label TextColor="White" Text="{x:Static local:Strings.SizeLabel}" FontAttributes="Bold" Grid.Column="3"/>
+                        <Label TextColor="White" Text="{x:Static local:Strings.PriceLabel}" FontAttributes="Bold" Grid.Column="4"/>
+                        <Label TextColor="White" Text="{x:Static local:Strings.QuantityLabel}" FontAttributes="Bold" Grid.Column="5"/>
+                        <Label TextColor="White" Text="{x:Static local:Strings.PurchasePriceLabel}" FontAttributes="Bold" Grid.Column="6"/>
+                        <Label TextColor="White" Text="{x:Static local:Strings.CodeLabel}" FontAttributes="Bold" Grid.Column="7"/>
+                        <Label TextColor="White" Text="{x:Static local:Strings.ActionsLabel}" FontAttributes="Bold" Grid.Column="8" Grid.ColumnSpan="3"/>
+                    </Grid>
+
+                    <!-- Products List Content -->
+                    <ListView ItemsSource="{Binding Products}"
+                              HasUnevenRows="True"
+                              SeparatorVisibility="Default">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Padding="10" ColumnDefinitions="*,*,*,*,*,*,*,*,*,*,*">
+                                        <!-- Product Data Columns -->
+                                        <Label Text="{Binding Nom}" Grid.Column="0" VerticalOptions="Center"/>
+                                        <Label Text="{Binding Description}" Grid.Column="1" VerticalOptions="Center"/>
+                                        <Label Text="{Binding Categorie}" Grid.Column="2" VerticalOptions="Center"/>
+                                        <Label Text="{Binding Taille}" Grid.Column="3" VerticalOptions="Center"/>
+                                        <Label Text="{Binding PrixVente}" Grid.Column="4" VerticalOptions="Center"/>
+                                        <Label Text="{Binding Quantite}" Grid.Column="5" VerticalOptions="Center"/>
+                                        <Label Text="{Binding PrixAchat}" Grid.Column="6" VerticalOptions="Center"/>
+                                        <Label Text="{Binding Code}" Grid.Column="7" VerticalOptions="Center"/>
+
+                                        <!-- Action Buttons -->
+                                        <Button Text="{x:Static local:Strings.ShowButton}"
+                                                Clicked="OnShowProductClicked"
+                                                Grid.Column="8"
+                                                CornerRadius="10" />
+                                        <Button Text="{x:Static local:Strings.EditButton}"
+                                                Clicked="OnEditProductClicked"
+                                                Grid.Column="9"
+                                                CornerRadius="10" />
+                                        <Button Text="{x:Static local:Strings.DeleteButton}"
+                                                Command="{Binding BindingContext.DeleteCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+                                                CommandParameter="{Binding .}"
+                                                Grid.Column="10"
+                                                BackgroundColor="#FF4136"
+                                                TextColor="White"
+                                                CornerRadius="10" />
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Pagination Controls -->
+            <HorizontalStackLayout Spacing="20" HorizontalOptions="Center" Padding="0,20,0,0">
+                <Button Text="{x:Static local:Strings.PreviousButton}"
+                        Command="{Binding PreviousPageCommand}"
+                        BackgroundColor="#056296"
+                        TextColor="White"
+                        CornerRadius="10"
+                        Padding="12,6"/>
+                <Label Text="{Binding CurrentPage, StringFormat='{x:Static local:Strings.PageLabel}'}"
+                       VerticalOptions="Center"/>
+                <Button Text="{x:Static local:Strings.NextButton}"
+                        Command="{Binding NextPageCommand}"
+                        BackgroundColor="#056296"
+                        TextColor="White"
+                        CornerRadius="10"
+                        Padding="12,6"/>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

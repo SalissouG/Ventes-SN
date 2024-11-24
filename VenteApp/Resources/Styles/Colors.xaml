@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- Primary Color -->
+    <Color x:Key="Primary">#056296</Color>
+    <!-- Dark Blue -->
+
+    <!-- Complementary and Accent Colors -->
+    <Color x:Key="Secondary">#5ca3c7</Color>
+    <!-- Light Blue -->
+    <Color x:Key="Tertiary">#033d56</Color>
+    <!-- Darker Blue -->
+
+    <!-- Neutral Colors -->
+    <Color x:Key="White">White</Color>
+    <Color x:Key="Black">Black</Color>
+
+    <!-- Grayscale Colors -->
+    <Color x:Key="Gray100">#e0f0f8</Color>
+    <!-- Very Light Blue -->
+    <Color x:Key="Gray200">#b2d8e8</Color>
+    <!-- Pale Blue -->
+    <Color x:Key="Gray300">#80c2d8</Color>
+    <!-- Light Blue -->
+    <Color x:Key="Gray400">#4fabc7</Color>
+    <!-- Medium Blue -->
+    <Color x:Key="Gray500">#056296</Color>
+    <!-- Blue (Primary) -->
+    <Color x:Key="Gray600">#044a6f</Color>
+    <!-- Dark Blue -->
+    <Color x:Key="Gray900">#033d56</Color>
+    <!-- Very Dark Blue -->
+    <Color x:Key="Gray950">#022233</Color>
+    <!-- Almost Black Blue -->
+
+    <!-- Brushes for UI Elements -->
+    <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}"/>
+    <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary}"/>
+    <SolidColorBrush x:Key="TertiaryBrush" Color="{StaticResource Tertiary}"/>
+    <SolidColorBrush x:Key="WhiteBrush" Color="{StaticResource White}"/>
+    <SolidColorBrush x:Key="BlackBrush" Color="{StaticResource Black}"/>
+    <SolidColorBrush x:Key="Gray100Brush" Color="{StaticResource Gray100}"/>
+    <SolidColorBrush x:Key="Gray200Brush" Color="{StaticResource Gray200}"/>
+    <SolidColorBrush x:Key="Gray300Brush" Color="{StaticResource Gray300}"/>
+    <SolidColorBrush x:Key="Gray400Brush" Color="{StaticResource Gray400}"/>
+    <SolidColorBrush x:Key="Gray500Brush" Color="{StaticResource Gray500}"/>
+    <SolidColorBrush x:Key="Gray600Brush" Color="{StaticResource Gray600}"/>
+    <SolidColorBrush x:Key="Gray900Brush" Color="{StaticResource Gray900}"/>
+    <SolidColorBrush x:Key="Gray950Brush" Color="{StaticResource Gray950}"/>
+
+    <!-- Accent Colors for Highlights and Alerts -->
+    <Color x:Key="Yellow100Accent">#FFD700</Color>
+    <!-- Gold for Alerts -->
+    <Color x:Key="Yellow200Accent">#FFF68F</Color>
+    <!-- Light Gold for Highlights -->
+
+    <Color x:Key="Cyan100Accent">#5ca3c7</Color>
+    <!-- Light Blue for Highlights -->
+    <Color x:Key="Cyan200Accent">#b2d8e8</Color>
+    <!-- Pale Blue for Backgrounds -->
+
+    <Color x:Key="Blue100Accent">#1E90FF</Color>
+    <!-- Dodger Blue for Links or Buttons -->
+    <Color x:Key="Blue200Accent">#87CEFA</Color>
+    <!-- Light Sky Blue for Backgrounds -->
+
+</ResourceDictionary>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:VenteApp.Resources.Localization"
+             x:Class="VenteApp.LicensePage"
+             Title="{x:Static local:Strings.EnterLicenseTitle}"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#F0F8FF">
+
+    <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+
+        <!-- Input for Licence Key -->
+        <Label Text="{x:Static local:Strings.EnterLicenseLabel}" FontSize="24" HorizontalOptions="Center" FontAttributes="Bold"/>
+        <Entry x:Name="LicenceEntry" Placeholder="{x:Static local:Strings.LicenseKeyPlaceholder}" WidthRequest="300" BackgroundColor="White"/>
+
+        <!-- Button to Validate the Licence -->
+        <Button Text="{x:Static local:Strings.ValidateButton}" Clicked="OnValidateLicence" WidthRequest="150" />
+
+        <!-- Validation Message -->
+        <Label x:Name="ValidationMessageLabel" TextColor="Red" FontSize="16" HorizontalOptions="Center" />
+
+    </VerticalStackLayout>
+</ContentPage>

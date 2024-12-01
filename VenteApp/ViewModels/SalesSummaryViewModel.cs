@@ -15,6 +15,7 @@ namespace VenteApp
         private DateTime _dateDebut;
         private DateTime _dateFin;
         private string _searchTerm = string.Empty; // Search term for filtering
+        private decimal _totalSalesPrice; // Total sales price
 
         public ObservableCollection<ProductSalesSummary> ProductSalesSummary { get; set; }
 
@@ -48,6 +49,16 @@ namespace VenteApp
                 _searchTerm = value;
                 OnPropertyChanged();
                 LoadSalesSummary(); // Reload sales when search term changes
+            }
+        }
+
+        public decimal TotalSalesPrice
+        {
+            get => _totalSalesPrice;
+            set
+            {
+                _totalSalesPrice = value;
+                OnPropertyChanged();
             }
         }
 
@@ -109,6 +120,9 @@ namespace VenteApp
                                        TotalSalesPrice = group.Sum(st => st.Quantite * st.Product.PrixVente) // Sum in-memory
                                    })
                                    .ToList();
+
+                // Calculate total sales price
+                TotalSalesPrice = totalSales.Sum(s => s.TotalSalesPrice);
 
                 // Calculate total pages based on PageSize
                 TotalPages = (int)Math.Ceiling(totalSales.Count / (double)PageSize);

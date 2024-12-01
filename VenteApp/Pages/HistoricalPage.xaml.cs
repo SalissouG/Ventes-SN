@@ -73,15 +73,15 @@ public partial class HistoricalPage : ContentPage
                     }
 
                     // Draw sale details
-                    gfx.DrawString(sale.Product.Nom ?? "", labelFont, XBrushes.Black,
+                    gfx.DrawString(TruncateText(sale.Product.Nom ?? "", columnWidths[0], labelFont, gfx), labelFont, XBrushes.Black,
                         new XRect(columnPositions[0], yOffset, columnWidths[0], 20), XStringFormats.TopLeft);
-                    gfx.DrawString(sale.Product.Categorie ?? "", labelFont, XBrushes.Black,
+                    gfx.DrawString(TruncateText(sale.Product.Categorie ?? "", columnWidths[1], labelFont, gfx), labelFont, XBrushes.Black,
                         new XRect(columnPositions[1], yOffset, columnWidths[1], 20), XStringFormats.TopLeft);
-                    gfx.DrawString(sale.Product.Taille ?? "", labelFont, XBrushes.Black,
+                    gfx.DrawString(TruncateText(sale.Product.Taille ?? "", columnWidths[2], labelFont, gfx), labelFont, XBrushes.Black,
                         new XRect(columnPositions[2], yOffset, columnWidths[2], 20), XStringFormats.TopLeft);
                     gfx.DrawString(sale.DateDeVente.ToString("dd/MM/yyyy HH:mm"), labelFont, XBrushes.Black,
                         new XRect(columnPositions[3], yOffset, columnWidths[3], 20), XStringFormats.TopLeft);
-                    gfx.DrawString(sale.Product.PrixVente.ToString("C"), labelFont, XBrushes.Black,
+                    gfx.DrawString(sale.Product.PrixVente.ToString(), labelFont, XBrushes.Black,
                         new XRect(columnPositions[4], yOffset, columnWidths[4], 20), XStringFormats.TopLeft);
                     gfx.DrawString(sale.Quantite.ToString(), labelFont, XBrushes.Black,
                         new XRect(columnPositions[5], yOffset, columnWidths[5], 20), XStringFormats.TopLeft);
@@ -114,5 +114,18 @@ public partial class HistoricalPage : ContentPage
             Console.WriteLine($"Error generating PDF: {ex.Message}");
             await DisplayAlert("Erreur", $"Une erreur s'est produite lors de la création du fichier PDF: {ex.Message}", "OK");
         }
+    }
+
+    private string TruncateText(string text, int maxWidth, XFont font, XGraphics gfx)
+    {
+        if (gfx.MeasureString(text, font).Width > maxWidth)
+        {
+            while (gfx.MeasureString(text + "...", font).Width > maxWidth && text.Length > 0)
+            {
+                text = text.Substring(0, text.Length - 1);
+            }
+            return text + "...";
+        }
+        return text;
     }
 }

@@ -10,6 +10,7 @@ namespace VenteApp
         public DbSet<User> Users { get; set; }
 
         public DbSet<Owner> Owners { get; set; }
+        public DbSet<Basket> Baskets { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -17,9 +18,9 @@ namespace VenteApp
             var folderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
 
             // Combine the folder path with the database file name
-            var databasePath = Path.Combine(folderPath, "VenteApp16.db");
+            var databasePath = Path.Combine(folderPath, "VenteApp18.db");
 
-            // Log the database path (for debugging purposes)
+            // Log the database path (for debugging purposes)f
             Console.WriteLine($"Database path: {databasePath}");
 
             // Use SQLite with the full database path
@@ -28,10 +29,6 @@ namespace VenteApp
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            try
-            {
-
-            
             // SaleTransaction to Product
             modelBuilder.Entity<SaleTransaction>()
                 .HasOne(s => s.Product)
@@ -43,9 +40,6 @@ namespace VenteApp
                 .HasOne(s => s.Client)
                 .WithMany(c => c.Transactions)
                 .HasForeignKey(s => s.ClientId);
-
-            }
-            catch (InvalidOperationException ex) { }
         }
 
         public void InitializeDatabase()

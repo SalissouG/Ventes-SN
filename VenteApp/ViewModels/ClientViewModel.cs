@@ -134,6 +134,15 @@ namespace VenteApp
                 var clientToDelete = db.Clients.Find(client.Id);
                 if (clientToDelete != null)
                 {
+                    // Find and delete all associated sale transactions
+                    var saleTransactionsToDelete = db.SaleTransactions
+                                                     .Where(st => st.ClientId == client.Id)
+                                                     .ToList();
+                    foreach (var saleTransaction in saleTransactionsToDelete)
+                    {
+                        db.SaleTransactions.Remove(saleTransaction);
+                    }
+
                     db.Clients.Remove(clientToDelete);
                     db.SaveChanges();
                 }

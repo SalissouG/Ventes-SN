@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:VenteApp.Resources.Localization"
@@ -25,24 +24,34 @@
                                FontSize="24"
                                FontAttributes="Bold"
                                VerticalOptions="Center" />
-                        <Label Text="{Binding TotalPrice, StringFormat='{x:Static local:Strings.TotalLabel}: {0:C}'}"
+                        <Label Text="{Binding TotalPrice}"
                                FontSize="20"
                                VerticalOptions="Center"
                                Grid.Column="1" />
                     </Grid>
 
-                    <!-- Client Picker -->
-                    <Picker Title="{x:Static local:Strings.ClientPickerTitle}"
-                            WidthRequest="300"
-                            ItemsSource="{Binding Clients}"
-                            ItemDisplayBinding="{Binding Nom}"
-                            SelectedItem="{Binding SelectedClient}" />
+                    <HorizontalStackLayout Spacing="20">
+                        <!-- Client Picker -->
+                        <Picker Title="{x:Static local:Strings.ClientPickerTitle}"
+                                WidthRequest="300"
+                                ItemsSource="{Binding Clients}"
+                                ItemDisplayBinding="{Binding Nom}"
+                                SelectedItem="{Binding SelectedClient}" />
+
+                        <!-- Payment Mode Picker -->
+                        <Picker Title="Mode de paiement"
+                                WidthRequest="300"
+                                ItemsSource="{Binding PaymentModes}"
+                                SelectedItem="{Binding SelectedPaymentMode}" />
+                    </HorizontalStackLayout>
 
                     <!-- Basket List with Header -->
                     <Frame BorderColor="LightGray"
                            CornerRadius="10"
                            Padding="0"
-                           BackgroundColor="White">
+                           BackgroundColor="White"
+                           MinimumHeightRequest="200">
+                        <!-- Set a minimum height -->
                         <VerticalStackLayout>
 
                             <!-- Table Headers -->
@@ -56,28 +65,30 @@
                             <!-- Basket Items List -->
                             <ListView ItemsSource="{Binding CartItems}"
                                       HasUnevenRows="True"
-                                      SeparatorVisibility="Default">
+                                      SeparatorVisibility="Default"
+                                      MinimumHeightRequest="150">
+                                <!-- Set a minimum height -->
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>
                                             <Grid Padding="10" ColumnDefinitions="*,*,*,*">
                                                 <!-- Basket Item Data -->
                                                 <Label Text="{Binding Nom}" Grid.Column="0" VerticalOptions="Center"/>
-                                                <Label Text="{Binding TotalPrice, StringFormat='{0:C}'}" Grid.Column="1" VerticalOptions="Center"/>
+                                                <Label Text="{Binding Prix}" Grid.Column="1" VerticalOptions="Center"/>
 
                                                 <!-- Increment/Decrement Buttons and Quantity Display -->
                                                 <HorizontalStackLayout Grid.Column="2" HorizontalOptions="Start" Spacing="5">
-                                                    <Button Text="{x:Static local:Strings.DecrementButton}" 
-                                                            Clicked="OnDecrementClicked" 
-                                                            WidthRequest="40" 
+                                                    <Button Text="{x:Static local:Strings.DecrementButton}"
+                                                            Clicked="OnDecrementClicked"
+                                                            WidthRequest="40"
                                                             CornerRadius="10"/>
-                                                    <Entry Text="{Binding Quantite}" 
-                                                           WidthRequest="50" 
-                                                           HorizontalTextAlignment="Center" 
+                                                    <Entry Text="{Binding Quantite}"
+                                                           WidthRequest="50"
+                                                           HorizontalTextAlignment="Center"
                                                            TextChanged="OnQuantityTextChanged"/>
-                                                    <Button Text="{x:Static local:Strings.IncrementButton}" 
-                                                            Clicked="OnIncrementClicked" 
-                                                            WidthRequest="40" 
+                                                    <Button Text="{x:Static local:Strings.IncrementButton}"
+                                                            Clicked="OnIncrementClicked"
+                                                            WidthRequest="40"
                                                             CornerRadius="10"/>
                                                 </HorizontalStackLayout>
 

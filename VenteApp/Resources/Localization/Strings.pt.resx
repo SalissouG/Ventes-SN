@@ -129,6 +129,9 @@
   <data name="AddProductButton" xml:space="preserve">
     <value>Adicionar um produto</value>
   </data>
+  <data name="AddProviderButton" xml:space="preserve">
+    <value>Adicionar um Fornecedor</value>
+  </data>
   <data name="AddressLabel" xml:space="preserve">
     <value>Endereço</value>
   </data>
@@ -312,6 +315,9 @@
   <data name="NextButton" xml:space="preserve">
     <value>Próximo</value>
   </data>
+  <data name="NumberLabel" xml:space="preserve">
+    <value>Número</value>
+  </data>
   <data name="OwnerLabel" xml:space="preserve">
     <value>Proprietário</value>
   </data>
@@ -450,6 +456,9 @@
   <data name="SearchProductPlaceholder" xml:space="preserve">
     <value>Pesquisar um produto</value>
   </data>
+  <data name="SearchProviderPlaceholder" xml:space="preserve">
+    <value>Pesquisar um fornecedor</value>
+  </data>
   <data name="SearchSalePlaceholder" xml:space="preserve">
     <value>Pesquisar uma venda</value>
   </data>
@@ -461,6 +470,9 @@
   </data>
   <data name="ShowButton" xml:space="preserve">
     <value>Mostrar</value>
+  </data>
+  <data name="ShowProductsButton" xml:space="preserve">
+    <value>Produtos</value>
   </data>
   <data name="SizeLabel" xml:space="preserve">
     <value>Tamanho</value>
@@ -525,13 +537,19 @@
   <data name="WelcomeTitle" xml:space="preserve">
     <value>Bem-vindo</value>
   </data>
-  <data name="Key" xml:space="preserve">
-    <value>Portuguese</value>
-  </data>
   <data name="ProviderPickerLabel" xml:space="preserve">
     <value>Fornecedores</value>
   </data>
   <data name="ProviderDetailsTitle" xml:space="preserve">
     <value>Informações do fornecedor</value>
+  </data>
+  <data name="CreditCard" xml:space="preserve">
+    <value>com cartão bancário</value>
+  </data>
+  <data name="Cash" xml:space="preserve">
+    <value>em dinheiro</value>
+  </data>
+  <data name="PaymentModePickerTitle" xml:space="preserve">
+    <value>Selecione o método de pagamento</value>
   </data>
 </root>

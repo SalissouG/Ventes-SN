@@ -47,13 +47,13 @@
                         </HorizontalStackLayout.GestureRecognizers>
                     </HorizontalStackLayout>
 
-                    <HorizontalStackLayout x:Name="BasketLayout" Spacing="10" StyleClass="MenuLayout">
+                    <!--<HorizontalStackLayout x:Name="BasketLayout" Spacing="10" StyleClass="MenuLayout">
                         <Image Source="logowhite.jpg" HeightRequest="24" WidthRequest="24"/>
                         <Label x:Name="BasketLabel" Text="{x:Static local:Strings.BasketLabel}" StyleClass="MenuLabel"/>
                         <HorizontalStackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnBasketClicked"/>
                         </HorizontalStackLayout.GestureRecognizers>
-                    </HorizontalStackLayout>
+                    </HorizontalStackLayout>-->
 
                     <HorizontalStackLayout x:Name="BillingLayout" Spacing="10" StyleClass="MenuLayout">
                         <Image Source="logowhite.jpg" HeightRequest="24" WidthRequest="24"/>
@@ -95,13 +95,13 @@
                         </HorizontalStackLayout.GestureRecognizers>
                     </HorizontalStackLayout>
 
-                    <HorizontalStackLayout x:Name="DashboardLayout" Spacing="10" StyleClass="MenuLayout">
+                    <!--<HorizontalStackLayout x:Name="DashboardLayout" Spacing="10" StyleClass="MenuLayout">
                         <Image Source="logowhite.jpg" HeightRequest="24" WidthRequest="24"/>
                         <Label x:Name="DashboardLabel" Text="{x:Static local:Strings.DashboardLabel}" StyleClass="MenuLabel"/>
                         <HorizontalStackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnDashboardClicked"/>
                         </HorizontalStackLayout.GestureRecognizers>
-                    </HorizontalStackLayout>
+                    </HorizontalStackLayout>-->
 
                     <HorizontalStackLayout x:Name="UsersLayout" Spacing="10" StyleClass="MenuLayout">
                         <Image Source="logowhite.jpg" HeightRequest="24" WidthRequest="24"/>

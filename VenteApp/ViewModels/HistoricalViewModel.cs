@@ -98,6 +98,7 @@ namespace VenteApp
                 int skip = (CurrentPage - 1) * PageSize;
                 var pagedSales = db.SaleTransactions
                                    .Include(sale => sale.Product)
+                                   .Include(sale => sale.Client) // Include the Client details
                                    .OrderBy(sale => sale.DateDeVente)
                                    .Where(sale => sale.DateDeVente >= DateDebut && sale.DateDeVente <= DateFin)
                                    .Skip(skip)
@@ -120,6 +121,7 @@ namespace VenteApp
                 int skip = (pageNumber - 1) * PageSize;
                 var pagedSales = db.SaleTransactions
                                    .Include(sale => sale.Product)
+                                   .Include(sale => sale.Client) // Include the Client details
                                    .OrderBy(sale => sale.DateDeVente)
                                    .Where(sale => sale.DateDeVente >= DateDebut && sale.DateDeVente <= DateFin)
                                    .Skip(skip)
@@ -155,7 +157,6 @@ namespace VenteApp
         }
 
         // Search sales based on the product name or description
-
         private void FilterSales()
         {
             using (var db = new AppDbContext())
@@ -178,6 +179,7 @@ namespace VenteApp
                 // Fetch sales data from the database for the current page
                 var pagedSales = db.SaleTransactions
                                    .Include(sale => sale.Product) // Include the Product details
+                                   .Include(sale => sale.Client) // Include the Client details
                                    .Where(sale => sale.DateDeVente >= DateDebut && sale.DateDeVente <= DateFin)
                                    .OrderBy(sale => sale.DateDeVente)
                                    .Skip(skip)
@@ -193,7 +195,6 @@ namespace VenteApp
                         FilteredSales.Add(sale);
                     }
                 }
-               
             }
         }
 
@@ -203,6 +204,7 @@ namespace VenteApp
             {
                 var filteredSales = db.SaleTransactions
                                       .Include(sale => sale.Product)
+                                      .Include(sale => sale.Client) // Include the Client details
                                       .Where(sale => sale.Product.Nom.ToLower().Contains(searchTerm.ToLower()) ||
                                                      sale.Product.Description.ToLower().Contains(searchTerm.ToLower()) ||
                                                      sale.Product.Categorie.ToLower().Contains(searchTerm.ToLower()))
@@ -229,6 +231,7 @@ namespace VenteApp
             {
                 return db.SaleTransactions
                          .Include(sale => sale.Product)
+                         .Include(sale => sale.Client) // Include the Client details
                          .Where(sale => sale.DateDeVente >= DateDebut && sale.DateDeVente <= DateFin)
                          .OrderBy(sale => sale.DateDeVente)
                          .ToList();
@@ -236,13 +239,3 @@ namespace VenteApp
         }
     }
 }
-
-
-
-
-
-
-
-
-
-

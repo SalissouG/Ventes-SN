@@ -161,6 +161,7 @@ namespace VenteApp
         {
             return products.Select(product => new Sale
             {
+                Id = Guid.NewGuid(),
                 ProductId = product.Id,
                 Nom = product.Nom,
                 Description = product.Description,

@@ -1,4 +1,3 @@
-using System.Collections.ObjectModel;
 using System.Globalization;
 
 namespace VenteApp
@@ -19,9 +18,7 @@ namespace VenteApp
             }
 
             CultureInfo.CurrentCulture = new CultureInfo("fr-FR");
-
         }
-
 
         // Load product details into the form for editing
         private void LoadProductDetails(Product product)
@@ -35,7 +32,6 @@ namespace VenteApp
             TailleEntry.Text = product.Taille;
             UniteMesureEntry.Text = product.UniteMesure;
             ExpirationDatePicker.Date = product.DateExpiration ?? DateTime.Now;
-
         }
 
         // Real-time validation for fields
@@ -70,6 +66,12 @@ namespace VenteApp
                 NomError.IsVisible = true;
                 return false;
             }
+            else if (NomEntry.Text.Length > 100)
+            {
+                NomError.Text = "Le nom ne peut pas dépasser 100 caractères.";
+                NomError.IsVisible = true;
+                return false;
+            }
 
             NomError.IsVisible = false;
             return true;
@@ -80,6 +82,12 @@ namespace VenteApp
             if (string.IsNullOrWhiteSpace(DescriptionEntry.Text))
             {
                 DescriptionError.Text = "La description est obligatoire.";
+                DescriptionError.IsVisible = true;
+                return false;
+            }
+            else if (DescriptionEntry.Text.Length > 500)
+            {
+                DescriptionError.Text = "La description ne peut pas dépasser 500 caractères.";
                 DescriptionError.IsVisible = true;
                 return false;
             }
@@ -140,13 +148,11 @@ namespace VenteApp
             return true;
         }
 
-
         // Save the product (create or update)
         private async void OnSaveProductClicked(object sender, EventArgs e)
         {
             if (!ValidateInputs())
                 return;
-
 
             try
             {
@@ -206,7 +212,6 @@ namespace VenteApp
                 await db.SaveChangesAsync();
             }
         }
-
 
         // Cancel and return to the product list
         private async void OnCancelClicked(object sender, EventArgs e)

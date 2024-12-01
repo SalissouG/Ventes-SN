@@ -1,3 +1,7 @@
+using System.Collections.ObjectModel;
+using System.Globalization;
+using System.Linq;
+
 namespace VenteApp
 {
     public partial class CreateClientPage : ContentPage
@@ -52,6 +56,12 @@ namespace VenteApp
             ValidateEmail();
         }
 
+        // Real-time validation for NumeroClient field
+        private void OnNumeroClientTextChanged(object sender, TextChangedEventArgs e)
+        {
+            ValidateNumeroClient();
+        }
+
         // Validate all fields before saving
         private bool ValidateInputs()
         {
@@ -61,6 +71,7 @@ namespace VenteApp
             isValid = ValidatePrenom() && isValid;
             isValid = ValidateNumero() && isValid;
             isValid = ValidateEmail() && isValid;
+            isValid = ValidateNumeroClient() && isValid;
 
             return isValid;
         }
@@ -71,6 +82,12 @@ namespace VenteApp
             if (string.IsNullOrWhiteSpace(NomEntry.Text))
             {
                 NomError.Text = "Le nom est obligatoire.";
+                NomError.IsVisible = true;
+                return false;
+            }
+            else if (NomEntry.Text.Length > 100)
+            {
+                NomError.Text = "Le nom ne peut pas dépasser 100 caractères.";
                 NomError.IsVisible = true;
                 return false;
             }
@@ -87,6 +104,12 @@ namespace VenteApp
             if (string.IsNullOrWhiteSpace(PrenomEntry.Text))
             {
                 PrenomError.Text = "Le prénom est obligatoire.";
+                PrenomError.IsVisible = true;
+                return false;
+            }
+            else if (PrenomEntry.Text.Length > 100)
+            {
+                PrenomError.Text = "Le prénom ne peut pas dépasser 100 caractères.";
                 PrenomError.IsVisible = true;
                 return false;
             }
@@ -112,9 +135,9 @@ namespace VenteApp
                 NumeroError.IsVisible = true;
                 return false;
             }
-            else if (NumeroEntry.Text.Length < 8)
+            else if (NumeroEntry.Text.Length < 8 || NumeroEntry.Text.Length > 15)
             {
-                NumeroError.Text = "Le numéro de téléphone doit comporter au moins 8 chiffres.";
+                NumeroError.Text = "Le numéro de téléphone doit comporter entre 8 et 15 chiffres.";
                 NumeroError.IsVisible = true;
                 return false;
             }
@@ -140,9 +163,37 @@ namespace VenteApp
                 EmailError.IsVisible = true;
                 return false;
             }
+            else if (EmailEntry.Text.Length > 100)
+            {
+                EmailError.Text = "L'email ne peut pas dépasser 100 caractères.";
+                EmailError.IsVisible = true;
+                return false;
+            }
             else
             {
                 EmailError.IsVisible = false;
+                return true;
+            }
+        }
+
+        // Validate NumeroClient
+        private bool ValidateNumeroClient()
+        {
+            if (string.IsNullOrWhiteSpace(NumeroClientEntry.Text))
+            {
+                NumeroClientError.Text = "Le numéro client est obligatoire.";
+                NumeroClientError.IsVisible = true;
+                return false;
+            }
+            else if (NumeroClientEntry.Text.Length > 50)
+            {
+                NumeroClientError.Text = "Le numéro client ne peut pas dépasser 50 caractères.";
+                NumeroClientError.IsVisible = true;
+                return false;
+            }
+            else
+            {
+                NumeroClientError.IsVisible = false;
                 return true;
             }
         }
@@ -221,7 +272,6 @@ namespace VenteApp
                 await db.SaveChangesAsync(); // Commit changes to the database.
             }
         }
-
 
         private async void OnCancelClicked(object sender, EventArgs e)
         {

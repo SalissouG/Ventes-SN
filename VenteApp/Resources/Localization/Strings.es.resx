@@ -138,6 +138,9 @@
   <data name="AddressPlaceholder" xml:space="preserve">
     <value>Dirección</value>
   </data>
+  <data name="AddUserButton" xml:space="preserve">
+    <value>Agregar un usuario</value>
+  </data>
   <data name="AppName" xml:space="preserve">
     <value>Aplicación de Ventas</value>
   </data>
@@ -539,5 +542,14 @@
   </data>
   <data name="ProviderDetailsTitle" xml:space="preserve">
     <value>Información del proveedor</value>
+  </data>
+  <data name="CreditCard" xml:space="preserve">
+    <value>Tarjeta bancaria</value>
+  </data>
+  <data name="Cash" xml:space="preserve">
+    <value>En efectivo</value>
+  </data>
+  <data name="PaymentModePickerTitle" xml:space="preserve">
+    <value>Seleccione el método de pago</value>
   </data>
 </root>

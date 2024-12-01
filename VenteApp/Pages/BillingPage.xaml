@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:VenteApp.Resources.Localization"
@@ -45,12 +44,13 @@
                    BackgroundColor="White">
                 <VerticalStackLayout>
                     <!-- Table Headers -->
-                    <Grid Padding="10" BackgroundColor="#056296" ColumnDefinitions="*,*,*,*,*">
+                    <Grid Padding="10" BackgroundColor="#056296" ColumnDefinitions="*,*,*,*,*,*">
                         <Label TextColor="White" Text="{x:Static local:Strings.ClientLabel}" FontAttributes="Bold" Grid.Column="0"/>
                         <Label TextColor="White" Text="{x:Static local:Strings.TotalLabel}" FontAttributes="Bold" Grid.Column="1"/>
                         <Label TextColor="White" Text="{x:Static local:Strings.ProductsLabel}" FontAttributes="Bold" Grid.Column="2"/>
                         <Label TextColor="White" Text="{x:Static local:Strings.SaleDateLabel}" FontAttributes="Bold" Grid.Column="3"/>
-                        <Label TextColor="White" Text="{x:Static local:Strings.ActionsLabel}" FontAttributes="Bold" Grid.Column="4"/>
+                        <Label TextColor="White" Text="Mode de payement" FontAttributes="Bold" Grid.Column="4"/>
+                        <Label TextColor="White" Text="{x:Static local:Strings.ActionsLabel}" FontAttributes="Bold" Grid.Column="5"/>
                     </Grid>
 
                     <!-- Billing List -->
@@ -60,19 +60,20 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <Grid Padding="10" ColumnDefinitions="*,*,*,*,*">
+                                    <Grid Padding="10" ColumnDefinitions="*,*,*,*,*,*">
                                         <!-- Billing Data Columns -->
                                         <Label Text="{Binding ClientName}" Grid.Column="0" VerticalOptions="Center"/>
-                                        <Label Text="{Binding TotalAmount, StringFormat='{0:C}'}" Grid.Column="1" VerticalOptions="Center"/>
+                                        <Label Text="{Binding TotalAmount}" Grid.Column="1" VerticalOptions="Center"/>
                                         <Label Text="{Binding NumberOfProducts}" Grid.Column="2" VerticalOptions="Center"/>
                                         <Label Text="{Binding SaleDate, StringFormat='{0:dd/MM/yyyy HH:mm}'}" Grid.Column="3" VerticalOptions="Center"/>
+                                        <Label Text="{Binding PaymentMode}" Grid.Column="4" VerticalOptions="Center"/>
 
                                         <!-- View Button -->
                                         <Button Text="{x:Static local:Strings.ViewButton}"
                                                 Clicked="OnViewBillClicked"
                                                 CommandParameter="{Binding OrderId}"
                                                 CornerRadius="10"
-                                                Grid.Column="4"/>
+                                                Grid.Column="5"/>
                                     </Grid>
                                 </ViewCell>
                             </DataTemplate>

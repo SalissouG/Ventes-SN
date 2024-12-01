@@ -17,34 +17,42 @@ namespace VenteApp
 
         private void LoadBillDetails(Guid orderId)
         {
-            using (var db = new AppDbContext())
+            try
             {
-                var transactions = db.SaleTransactions
-                                     .Include(st => st.Client)
-                                     .Include(st => st.Product)
-                                     .Where(st => st.OrderId == orderId)
-                                     .ToList();
-
-                if (transactions.Any())
+                using (var db = new AppDbContext())
                 {
-                    var firstTransaction = transactions.FirstOrDefault();
-                    Bill = new BillDetailViewModel
-                    {
-                        ClientName = firstTransaction.Client != null ? $"{firstTransaction.Client.Nom} {firstTransaction.Client.Prenom}" : "Client inconnu",
-                        TotalAmount = transactions.Sum(t => t.Product.PrixVente * t.Quantite),
-                        SaleDate = firstTransaction.DateDeVente,
-                        NumeroSiret = firstTransaction.Client.NumeroClient,
-                        Products = transactions.Select(t => new ProductDetailViewModel
-                        {
-                            ProductName = t.Product.Nom,
-                            Quantity = t.Quantite,
-                            Price = t.Product.PrixVente
-                        }).ToList()
-                    };
+                    var transactions = db.SaleTransactions
+                                         .Include(st => st.Client)
+                                         .Include(st => st.Product)
+                                         .Where(st => st.OrderId == orderId)
+                                         .ToList();
 
-                    OnPropertyChanged(nameof(Bill));
+                    if (transactions.Any())
+                    {
+                        var firstTransaction = transactions.FirstOrDefault();
+                        Bill = new BillDetailViewModel
+                        {
+                            ClientName = firstTransaction.Client != null ? $"{firstTransaction.Client.Nom} {firstTransaction.Client.Prenom}" : "Client inconnu",
+                            TotalAmount = transactions.Sum(t => t.Product.PrixVente * t.Quantite),
+                            SaleDate = firstTransaction.DateDeVente,
+                            NumeroSiret = firstTransaction.Client != null ? firstTransaction.Client.NumeroClient : "-",
+                            Products = transactions.Select(t => new ProductDetailViewModel
+                            {
+                                ProductName = t.Product.Nom,
+                                Quantity = t.Quantite,
+                                Price = t.Product.PrixVente
+                            }).ToList()
+                        };
+
+                        OnPropertyChanged(nameof(Bill));
+                    }
                 }
             }
+            catch (Exception ex) {
+
+                
+            }
+            
         }
 
         private async void OnDownloadPdfClicked(object sender, EventArgs e)

@@ -77,13 +77,13 @@ namespace VenteApp
         // Navigation methods for all menu items
         private async void OnProductsClicked(object sender, EventArgs e) => await NavigateToPage(new ProductsPage(), ProductsLabel, ProductsLayout);
         private async void OnSalesClicked(object sender, EventArgs e) => await NavigateToPage(new SalesPage(), SalesLabel, SalesLayout);
-        private async void OnBasketClicked(object sender, EventArgs e) => await NavigateToPage(new BasketPage(), BasketLabel, BasketLayout);
+        //private async void OnBasketClicked(object sender, EventArgs e) => await NavigateToPage(new BasketPage(), BasketLabel, BasketLayout);
         private async void OnBillingClicked(object sender, EventArgs e) => await NavigateToPage(new BillingPage(), BillingLabel, BillingLayout);
         private async void OnClientsClicked(object sender, EventArgs e) => await NavigateToPage(new ClientsPage(), ClientsLabel, ClientsLayout);
         private async void OnHistoricalClicked(object sender, EventArgs e) => await NavigateToPage(new HistoricalPage(), HistoricalLabel, HistoricalLayout);
         private async void OnInventoryClicked(object sender, EventArgs e) => await NavigateToPage(new InventoryPage(), InventoryLabel, InventoryLayout);
         private async void OnSalesSummaryClicked(object sender, EventArgs e) => await NavigateToPage(new SalesSummaryPage(), SalesSummaryLabel, SalesSummaryLayout);
-        private async void OnDashboardClicked(object sender, EventArgs e) => await NavigateToPage(new DashboardPage(), DashboardLabel, DashboardLayout);
+        //private async void OnDashboardClicked(object sender, EventArgs e) => await NavigateToPage(new DashboardPage(), DashboardLabel, DashboardLayout);
         private async void OnUsersClicked(object sender, EventArgs e) => await NavigateToPage(new UsersPage(), UsersLabel, UsersLayout);
         private async void OnLicenseClicked(object sender, EventArgs e) => await NavigateToPage(new LicenseMenuPage(), LicenseLabel, LicenseLayout);
 
@@ -141,13 +141,13 @@ namespace VenteApp
             {
                 ProductsLabel,
                 SalesLabel,
-                BasketLabel,
+                //BasketLabel,
                 BillingLabel,
                 ClientsLabel,
                 HistoricalLabel,
                 InventoryLabel,
                 SalesSummaryLabel,
-                DashboardLabel,
+                //DashboardLabel,
                 UsersLabel,
                 LicenseLabel,
                 OwnerLabel // Include the OwnerLabel
@@ -157,13 +157,13 @@ namespace VenteApp
             {
                 ProductsLayout,
                 SalesLayout,
-                BasketLayout,
+                //BasketLayout,
                 BillingLayout,
                 ClientsLayout,
                 HistoricalLayout,
                 InventoryLayout,
                 SalesSummaryLayout,
-                DashboardLayout,
+                //DashboardLayout,
                 UsersLayout,
                 LicenseLayout,
                 DeconnexionLayout,

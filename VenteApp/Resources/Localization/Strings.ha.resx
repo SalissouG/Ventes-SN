@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ActionLabel" xml:space="preserve">
+    <value>Ayyuka</value>
+  </data>
   <data name="ActionsLabel" xml:space="preserve">
     <value>Ayyuka</value>
   </data>
@@ -144,6 +147,9 @@
   <data name="BasketLabel" xml:space="preserve">
     <value>Kwando</value>
   </data>
+  <data name="BasketTitle" xml:space="preserve">
+    <value>Kwando</value>
+  </data>
   <data name="BillingLabel" xml:space="preserve">
     <value>Lissafin Kuɗi</value>
   </data>
@@ -162,8 +168,17 @@
   <data name="ClientLabel" xml:space="preserve">
     <value>Abokin Ciniki:</value>
   </data>
+  <data name="ClientNumberLabel" xml:space="preserve">
+    <value>Lamba</value>
+  </data>
+  <data name="ClientNumberLabelFact" xml:space="preserve">
+    <value>Lamba</value>
+  </data>
   <data name="ClientNumberPlaceholder" xml:space="preserve">
     <value>Lambar mai saye</value>
+  </data>
+  <data name="ClientPickerTitle" xml:space="preserve">
+    <value>Abokin Ciniki</value>
   </data>
   <data name="ClientsLabel" xml:space="preserve">
     <value>Abokan Ciniki</value>
@@ -191,6 +206,9 @@
   </data>
   <data name="DateLabel" xml:space="preserve">
     <value>Kwanan Wata:</value>
+  </data>
+  <data name="DecrementButton" xml:space="preserve">
+    <value>-</value>
   </data>
   <data name="DeleteButton" xml:space="preserve">
     <value>Share</value>
@@ -242,6 +260,9 @@
   </data>
   <data name="HistoricalTitle" xml:space="preserve">
     <value>Tarihi</value>
+  </data>
+  <data name="IncrementButton" xml:space="preserve">
+    <value>+</value>
   </data>
   <data name="InventoryLabel" xml:space="preserve">
     <value>Jerin Kaya</value>
@@ -296,6 +317,9 @@
   </data>
   <data name="NumberLabel" xml:space="preserve">
     <value>Lambar</value>
+  </data>
+  <data name="OwnerLabel" xml:space="preserve">
+    <value>Oga</value>
   </data>
   <data name="PageLabel" xml:space="preserve">
     <value>Shafi {0} na {Binding TotalPages}</value>
@@ -513,13 +537,19 @@
   <data name="WelcomeTitle" xml:space="preserve">
     <value>Barka da Zuwa</value>
   </data>
-  <data name="DownloadPdfButton2" xml:space="preserve">
-    <value>Sauke PDF</value>
-  </data>
   <data name="ProviderPickerLabel" xml:space="preserve">
     <value>Masu Samarwa</value>
   </data>
   <data name="ProviderDetailsTitle" xml:space="preserve">
     <value>Mai Samarwa</value>
+  </data>
+  <data name="CreditCard" xml:space="preserve">
+    <value>Carte</value>
+  </data>
+  <data name="Cash" xml:space="preserve">
+    <value>Kudi</value>
+  </data>
+  <data name="PaymentModePickerTitle" xml:space="preserve">
+    <value>Biya</value>
   </data>
 </root>

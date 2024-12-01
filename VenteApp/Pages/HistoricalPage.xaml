@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:VenteApp.Resources.Localization"
@@ -59,7 +58,7 @@
                    BackgroundColor="White">
                 <VerticalStackLayout>
                     <!-- Table Headers -->
-                    <Grid Padding="10" BackgroundColor="#056296" ColumnDefinitions="*,*,*,*,*,*,*">
+                    <Grid Padding="10" BackgroundColor="#056296" ColumnDefinitions="*,*,*,*,*,*,*,*">
                         <Label TextColor="White" Text="{x:Static local:Strings.NameLabel}" FontAttributes="Bold" Grid.Column="0"/>
                         <Label TextColor="White" Text="{x:Static local:Strings.DescriptionLabel}" FontAttributes="Bold" Grid.Column="1"/>
                         <Label TextColor="White" Text="{x:Static local:Strings.CategoryLabel}" FontAttributes="Bold" Grid.Column="2"/>
@@ -67,6 +66,7 @@
                         <Label TextColor="White" Text="{x:Static local:Strings.SaleDateLabel}" FontAttributes="Bold" Grid.Column="4"/>
                         <Label TextColor="White" Text="{x:Static local:Strings.SalePriceLabel}" FontAttributes="Bold" Grid.Column="5"/>
                         <Label TextColor="White" Text="{x:Static local:Strings.QuantitySoldLabel}" FontAttributes="Bold" Grid.Column="6"/>
+                        <Label TextColor="White" Text="{x:Static local:Strings.ClientTitle}" FontAttributes="Bold" Grid.Column="7"/>
                     </Grid>
 
                     <!-- Historical List -->
@@ -76,15 +76,16 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <Grid Padding="10" ColumnDefinitions="*,*,*,*,*,*,*">
+                                    <Grid Padding="10" ColumnDefinitions="*,*,*,*,*,*,*,*">
                                         <!-- Product Data from SaleTransaction -->
                                         <Label Text="{Binding Product.Nom}" Grid.Column="0" VerticalOptions="Center"/>
                                         <Label Text="{Binding Product.Description}" Grid.Column="1" VerticalOptions="Center"/>
                                         <Label Text="{Binding Product.Categorie}" Grid.Column="2" VerticalOptions="Center"/>
                                         <Label Text="{Binding Product.Taille}" Grid.Column="3" VerticalOptions="Center"/>
                                         <Label Text="{Binding DateDeVente, StringFormat='{0:dd/MM/yyyy HH:mm}'}" Grid.Column="4" VerticalOptions="Center"/>
-                                        <Label Text="{Binding Product.Prix, StringFormat='{0:C}'}" Grid.Column="5" VerticalOptions="Center"/>
+                                        <Label Text="{Binding Product.PrixDeVente}" Grid.Column="5" VerticalOptions="Center"/>
                                         <Label Text="{Binding Quantite}" Grid.Column="6" VerticalOptions="Center"/>
+                                        <Label Text="{Binding Client.Nom}" Grid.Column="7" VerticalOptions="Center"/>
                                     </Grid>
                                 </ViewCell>
                             </DataTemplate>

@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Windows.Input;
 
@@ -291,9 +290,9 @@ namespace VenteApp
                 Description = product.Description,
                 Categorie = product.Categorie,
                 Taille = product.Taille,
-                PrixVente = product.PrixVente.ToString("C"), // Format as currency
+                PrixVente = product.PrixVente.ToString(), // Format as currency
                 Quantite = product.Quantite.ToString(),
-                PrixAchat = product.PrixAchat.ToString("C"), // Format as currency
+                PrixAchat = product.PrixAchat.ToString(), // Format as currency
                 Code = product.Code,
                 DateExpiration = product.DateExpiration?.ToString("d"), // Format as short date
                 UniteMesure = product.UniteMesure,

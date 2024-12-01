@@ -64,7 +64,7 @@
                                         <Label Text="{Binding Description}" Grid.Column="1" VerticalOptions="Center"/>
                                         <Label Text="{Binding Categorie}" Grid.Column="2" VerticalOptions="Center"/>
                                         <Label Text="{Binding Taille}" Grid.Column="3" VerticalOptions="Center"/>
-                                        <Label Text="{Binding Prix, StringFormat='{0:C}'}" Grid.Column="4" VerticalOptions="Center"/>
+                                        <Label Text="{Binding Prix}" Grid.Column="4" VerticalOptions="Center"/>
 
                                         <!-- Increment/Decrement Buttons and Quantity Display -->
                                         <HorizontalStackLayout Grid.Column="5" HorizontalOptions="Start" Spacing="5">

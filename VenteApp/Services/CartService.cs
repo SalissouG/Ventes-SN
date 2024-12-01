@@ -5,8 +5,26 @@ namespace VenteApp
 {
     public class CartService
     {
+        private static readonly object _instanceLock = new object();
         private static CartService _instance;
-        public static CartService Instance => _instance ??= new CartService();
+
+        public static CartService Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    lock (_instanceLock)
+                    {
+                        if (_instance == null)
+                        {
+                            _instance = new CartService();
+                        }
+                    }
+                }
+                return _instance;
+            }
+        }
 
         public ObservableCollection<Sale> CartItems { get; }
 
@@ -27,7 +45,7 @@ namespace VenteApp
             {
                 // Add a new item to the cart
                 CartItems.Add(new Sale
-                {   
+                {
                     Id = sale.Id,
                     ProductId = sale.ProductId,
                     DateDeVente = sale.DateDeVente,
@@ -42,14 +60,27 @@ namespace VenteApp
             }
         }
 
+        private readonly object _lock = new object();
+
         public void RemoveFromCart(Sale sale)
         {
-            CartItems.Remove(sale);
-            SaveCart();
+            lock (_lock)
+            {
+                if (CartItems.Count == 0) return;
+
+                var itemToRemove = CartItems.FirstOrDefault(s => s.Id == sale.Id);
+                if (itemToRemove != null)
+                {
+                    CartItems.Remove(itemToRemove);
+                    SaveCart();
+                }
+            }
         }
 
         public decimal GetTotalPrice()
         {
+            if (CartItems.Count == 0) return 0;
+
             return CartItems.Sum(item => item.TotalPrice);
         }
 

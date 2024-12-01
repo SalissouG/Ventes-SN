@@ -1,5 +1,4 @@
-﻿using Microcharts.Maui;
-using Microsoft.Maui.LifecycleEvents;
+﻿using Microsoft.Maui.LifecycleEvents;
 
 namespace VenteApp;
 
@@ -33,9 +32,7 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 fonts.AddFont("FluentSystemIcons-Regular.ttf", "FluentIcons");
             });
-
-        // Initialize Microcharts
-        builder.UseMicrocharts();
+        
 
         return builder.Build();
     }

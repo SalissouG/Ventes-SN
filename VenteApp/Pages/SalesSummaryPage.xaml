@@ -79,7 +79,7 @@
                                         <Label Text="{Binding TotalQuantitySold}" Grid.Column="1" VerticalOptions="Center"/>
 
                                         <!-- Total Sales Price -->
-                                        <Label Text="{Binding TotalSalesPrice, StringFormat='{0:C}'}" Grid.Column="2" VerticalOptions="Center"/>
+                                        <Label Text="{Binding TotalSalesPrice}" Grid.Column="2" VerticalOptions="Center"/>
                                     </Grid>
                                 </ViewCell>
                             </DataTemplate>
@@ -87,6 +87,22 @@
                     </ListView>
                 </VerticalStackLayout>
             </Frame>
+
+
+            <!-- Total Sales Price Section -->
+            <HorizontalStackLayout Spacing="20" HorizontalOptions="Start">
+                <Label Text="Total:"
+                       TextColor="Black"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center"
+                       />
+                <Label Text="{Binding TotalSalesPrice}"
+                       TextColor="Black"
+                       FontSize="20"
+                       VerticalOptions="Center"
+                       />
+            </HorizontalStackLayout>
 
             <!-- Pagination Controls -->
             <HorizontalStackLayout Spacing="20" HorizontalOptions="Center" Padding="0,20,0,0">

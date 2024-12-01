@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ActionLabel" xml:space="preserve">
+    <value>Actions</value>
+  </data>
   <data name="ActionsLabel" xml:space="preserve">
     <value>Actions</value>
   </data>
@@ -142,6 +145,9 @@
     <value>Vente App</value>
   </data>
   <data name="BasketLabel" xml:space="preserve">
+    <value>Panier</value>
+  </data>
+  <data name="BasketTitle" xml:space="preserve">
     <value>Panier</value>
   </data>
   <data name="BillingLabel" xml:space="preserve">
@@ -201,6 +207,9 @@
   <data name="DateLabel" xml:space="preserve">
     <value>Date :</value>
   </data>
+  <data name="DecrementButton" xml:space="preserve">
+    <value>-</value>
+  </data>
   <data name="DeleteButton" xml:space="preserve">
     <value>Supprimer</value>
   </data>
@@ -251,6 +260,9 @@
   </data>
   <data name="HistoricalTitle" xml:space="preserve">
     <value>Historiques</value>
+  </data>
+  <data name="IncrementButton" xml:space="preserve">
+    <value>+</value>
   </data>
   <data name="InventoryLabel" xml:space="preserve">
     <value>Inventaires</value>
@@ -525,13 +537,19 @@
   <data name="WelcomeTitle" xml:space="preserve">
     <value>Bienvenue</value>
   </data>
-  <data name="DownloadPdfButton2" xml:space="preserve">
-    <value>Télécharger PDF</value>
-  </data>
   <data name="ProviderPickerLabel" xml:space="preserve">
     <value>Fournisseurs</value>
   </data>
   <data name="ProviderDetailsTitle" xml:space="preserve">
     <value> Informations sur le fournisseur</value>
+  </data>
+  <data name="CreditCard" xml:space="preserve">
+    <value>par carte bancaire</value>
+  </data>
+  <data name="Cash" xml:space="preserve">
+    <value>en espèces</value>
+  </data>
+  <data name="PaymentModePickerTitle" xml:space="preserve">
+    <value>Sélectionnez le mode de paiement</value>
   </data>
 </root>

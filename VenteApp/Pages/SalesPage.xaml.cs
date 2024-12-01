@@ -1,4 +1,3 @@
-
 namespace VenteApp
 {
     public partial class SalesPage : ContentPage
@@ -32,8 +31,8 @@ namespace VenteApp
                     // Increment the quantity
                     sale.Quantite += 1;
 
-                    // Add to cart automatically
-                    CartService.Instance.AddToCart(sale);
+                    // Convert Sale to Basket and save to database
+                    AddOrUpdateBasket(db, sale);
                 }
                 else
                 {
@@ -53,16 +52,26 @@ namespace VenteApp
             {
                 sale.Quantite -= 1;
 
-                // Add to cart automatically
-                CartService.Instance.AddToCart(sale);
+                // Convert Sale to Basket and save to database
+                using (var db = new AppDbContext())
+                {
+                    AddOrUpdateBasket(db, sale);
+                }
             }
             else
             {
                 // Optionally remove from cart if the quantity reaches zero
-                CartService.Instance.RemoveFromCart(sale);
+                using (var db = new AppDbContext())
+                {
+                    var basket = db.Baskets.FirstOrDefault(b => b.ProductId == sale.ProductId);
+                    if (basket != null)
+                    {
+                        db.Baskets.Remove(basket);
+                        db.SaveChanges();
+                    }
+                }
             }
         }
-
 
         private async void OnShowBasketClicked(object sender, EventArgs e)
         {
@@ -102,9 +111,8 @@ namespace VenteApp
                     {
                         sale.Quantite = newQuantity;
 
-                        // Update the cart with the new quantity
-
-                        CartService.Instance.AddToCart(sale);
+                        // Convert Sale to Basket and save to database
+                        AddOrUpdateBasket(db, sale);
                     }
                     else
                     {
@@ -115,9 +123,43 @@ namespace VenteApp
                     }
                 }
             }
-            
         }
 
+        // Method to convert Sale to Basket
+        private Basket ConvertSaleToBasket(Sale sale)
+        {
+            return new Basket
+            {
+                Id = Guid.NewGuid(),
+                ProductId = sale.ProductId,
+                Nom = sale.Nom,
+                Description = sale.Description,
+                Prix = sale.Prix,
+                Quantite = sale.Quantite,
+                Categorie = sale.Categorie,
+                Taille = sale.Taille,
+                DateLimite = sale.DateLimite,
+                DateDeVente = sale.DateDeVente
+            };
+        }
 
+        // Method to add or update the basket item
+        private void AddOrUpdateBasket(AppDbContext db, Sale sale)
+        {
+            var existingBasketItem = db.Baskets.FirstOrDefault(b => b.ProductId == sale.ProductId);
+            if (existingBasketItem != null)
+            {
+                // Update the existing basket item
+                existingBasketItem.Quantite = sale.Quantite;
+                db.Baskets.Update(existingBasketItem);
+            }
+            else
+            {
+                // Add a new basket item
+                var basket = ConvertSaleToBasket(sale);
+                db.Baskets.Add(basket);
+            }
+            db.SaveChanges();
+        }
     }
 }

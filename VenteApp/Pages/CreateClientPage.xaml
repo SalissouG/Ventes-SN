@@ -20,17 +20,17 @@
                    HorizontalOptions="Start"
                    FontAttributes="Bold" />
 
-            <!-- Last Name Entry (Nom) -->
-            <Label Text="{x:Static resources:Strings.LastNameLabel}" FontSize="14" HorizontalOptions="Start" />
-            <Entry Placeholder="{x:Static resources:Strings.LastNamePlaceholder}" x:Name="NomEntry" WidthRequest="300" HorizontalOptions="Start"
-                   TextChanged="OnNomTextChanged" BackgroundColor="White"/>
-            <Label x:Name="NomError" TextColor="Red" FontSize="12" IsVisible="False" />
-
             <!-- First Name Entry (Prénom) -->
             <Label Text="{x:Static resources:Strings.FirstNameLabel}" FontSize="14" HorizontalOptions="Start" />
             <Entry Placeholder="{x:Static resources:Strings.FirstNamePlaceholder}" x:Name="PrenomEntry" WidthRequest="300" HorizontalOptions="Start"
                    TextChanged="OnPrenomTextChanged" BackgroundColor="White"/>
             <Label x:Name="PrenomError" TextColor="Red" FontSize="12" IsVisible="False" />
+
+            <!-- Last Name Entry (Nom) -->
+            <Label Text="{x:Static resources:Strings.LastNameLabel}" FontSize="14" HorizontalOptions="Start" />
+            <Entry Placeholder="{x:Static resources:Strings.LastNamePlaceholder}" x:Name="NomEntry" WidthRequest="300" HorizontalOptions="Start"
+         TextChanged="OnNomTextChanged" BackgroundColor="White"/>
+            <Label x:Name="NomError" TextColor="Red" FontSize="12" IsVisible="False" />
 
             <!-- Phone Number Entry (Numéro de téléphone) -->
             <Label Text="{x:Static resources:Strings.PhoneLabel}" FontSize="14" HorizontalOptions="Start" />
@@ -51,12 +51,13 @@
 
             <!-- Numéro Client Entry -->
             <Label Text="{x:Static resources:Strings.ClientNumberLabel}" FontSize="14" HorizontalOptions="Start" />
-            <Entry Placeholder="{x:Static resources:Strings.ClientNumberPlaceholder}" 
-                    x:Name="NumeroClientEntry" 
-                    WidthRequest="300" 
-                    HorizontalOptions="Start" 
-                    BackgroundColor="White"/>
-
+            <Entry Placeholder="{x:Static resources:Strings.ClientNumberPlaceholder}"
+       x:Name="NumeroClientEntry"
+       WidthRequest="300"
+       HorizontalOptions="Start"
+       BackgroundColor="White"
+       TextChanged="OnNumeroClientTextChanged"/>
+            <Label x:Name="NumeroClientError" TextColor="Red" FontSize="12" IsVisible="False" />
             <!-- Action Buttons -->
             <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
                 <Button Text="{x:Static resources:Strings.SaveButton}" Clicked="OnSaveClientClicked" WidthRequest="150"/>

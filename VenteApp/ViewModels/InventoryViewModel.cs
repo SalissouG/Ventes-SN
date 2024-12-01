@@ -119,7 +119,8 @@ namespace VenteApp
                 var filteredProducts = db.Products
                                          .Where(p => p.Nom.ToLower().Contains(query.ToLower()) ||
                                                      p.Description.ToLower().Contains(query.ToLower()) ||
-                                                     p.Categorie.ToLower().Contains(query.ToLower()))
+                                                     p.Categorie.ToLower().Contains(query.ToLower()) ||
+                                                     p.DateExpiration.HasValue && p.DateExpiration.Value.ToString("dd/MM/yyyy").Contains(query))
                                          .ToList();
 
                 // Update the pagination info

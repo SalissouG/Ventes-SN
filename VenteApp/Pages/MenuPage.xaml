@@ -111,13 +111,13 @@
                         </HorizontalStackLayout.GestureRecognizers>
                     </HorizontalStackLayout>
 
-                    <HorizontalStackLayout x:Name="LicenseLayout" Spacing="10" StyleClass="MenuLayout">
+                    <!--<HorizontalStackLayout x:Name="LicenseLayout" Spacing="10" StyleClass="MenuLayout">
                         <Image Source="logowhite.jpg" HeightRequest="24" WidthRequest="24"/>
                         <Label x:Name="LicenseLabel" Text="{x:Static local:Strings.LicenseLabel}" StyleClass="MenuLabel"/>
                         <HorizontalStackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnLicenseClicked"/>
                         </HorizontalStackLayout.GestureRecognizers>
-                    </HorizontalStackLayout>
+                    </HorizontalStackLayout>-->
 
                     <!-- Owner Information Menu Item (Admin Only) -->
                     <HorizontalStackLayout x:Name="OwnerLayout" Spacing="10" StyleClass="MenuLayout" IsVisible="False">

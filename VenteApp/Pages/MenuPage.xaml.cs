@@ -58,8 +58,8 @@ namespace VenteApp
             {
                 Detail = new NavigationPage(new LicenseMenuPage());
                 ResetLabelStyles();  // Reset styles for all labels
-                SetSelectedStyle(LicenseLabel);  // Highlight the License label
-                SetSelectedStyleLa(LicenseLayout);
+                //SetSelectedStyle(LicenseLabel);  // Highlight the License label
+                //SetSelectedStyleLa(LicenseLayout);
             }
         }
 
@@ -85,7 +85,7 @@ namespace VenteApp
         private async void OnSalesSummaryClicked(object sender, EventArgs e) => await NavigateToPage(new SalesSummaryPage(), SalesSummaryLabel, SalesSummaryLayout);
         //private async void OnDashboardClicked(object sender, EventArgs e) => await NavigateToPage(new DashboardPage(), DashboardLabel, DashboardLayout);
         private async void OnUsersClicked(object sender, EventArgs e) => await NavigateToPage(new UsersPage(), UsersLabel, UsersLayout);
-        private async void OnLicenseClicked(object sender, EventArgs e) => await NavigateToPage(new LicenseMenuPage(), LicenseLabel, LicenseLayout);
+        //private async void OnLicenseClicked(object sender, EventArgs e) => await NavigateToPage(new LicenseMenuPage(), LicenseLabel, LicenseLayout);
 
         private async void OnOwnerClicked(object sender, EventArgs e)
         {
@@ -117,8 +117,8 @@ namespace VenteApp
             {
                 Detail = new NavigationPage(new LicenseMenuPage());
                 ResetLabelStyles();
-                SetSelectedStyle(LicenseLabel);
-                SetSelectedStyleLa(LicenseLayout);
+                /*SetSelectedStyle(LicenseLabel);
+                SetSelectedStyleLa(LicenseLayout);*/
             }
 
             CheckLicenseExpiration();
@@ -129,7 +129,7 @@ namespace VenteApp
         {
             bool isAdmin = UserService.Instance.IsAdmin();
             UsersLayout.IsVisible = isAdmin;
-            LicenseLayout.IsVisible = isAdmin;
+            //LicenseLayout.IsVisible = isAdmin;
             OwnerLayout.IsVisible = isAdmin;
         }
 
@@ -149,7 +149,7 @@ namespace VenteApp
                 SalesSummaryLabel,
                 //DashboardLabel,
                 UsersLabel,
-                LicenseLabel,
+                //LicenseLabel,
                 OwnerLabel // Include the OwnerLabel
             };
 
@@ -165,7 +165,7 @@ namespace VenteApp
                 SalesSummaryLayout,
                 //DashboardLayout,
                 UsersLayout,
-                LicenseLayout,
+                //LicenseLayout,
                 DeconnexionLayout,
                 OwnerLayout // Include the OwnerLayout
             };
